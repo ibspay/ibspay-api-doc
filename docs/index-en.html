@@ -7,7 +7,7 @@
 <meta name="generator" content="Asciidoctor 1.5.3">
 <meta name="description" content="IBS Payment Gateway API">
 <meta name="keywords" content="IBS Payment Gateway,API">
-<meta name="author" content="paid">
+<meta name="author" content="v0.0, 2017-09-05">
 <title>API Document for IBS Payment Gateway</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
@@ -516,9 +516,7 @@ table.CodeRay td.code>pre{padding:0}
 <div id="header">
 <h1>API Document for IBS Payment Gateway</h1>
 <div class="details">
-<span id="author" class="author">paid</span><br>
-<span id="revnumber">version 0.0,</span>
-<span id="revdate">2017-09-05</span>
+<span id="author" class="author">v0.0, 2017-09-05</span><br>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Contents</div>
@@ -544,24 +542,21 @@ table.CodeRay td.code>pre{padding:0}
 </li>
 <li><a href="#_submit_refund_api">2.2. Submit Refund API</a>
 <ul class="sectlevel3">
-<li><a href="#_request_method_2">2.2.1. Request Method</a></li>
-<li><a href="#_request_parameters_2">2.2.2. Request Parameters</a></li>
-<li><a href="#_return_parameters">2.2.3. Return Parameters</a></li>
-<li><a href="#_asynchronous_notification_parameters_2">2.2.4. Asynchronous Notification Parameters</a></li>
+<li><a href="#_request_parameters_2">2.2.1. Request Parameters</a></li>
+<li><a href="#_return_parameters">2.2.2. Return Parameters</a></li>
+<li><a href="#_asynchronous_notification_parameters_2">2.2.3. Asynchronous Notification Parameters</a></li>
 </ul>
 </li>
 <li><a href="#_query_order">2.3. Query Order</a>
 <ul class="sectlevel3">
-<li><a href="#_request_method_3">2.3.1. Request Method</a></li>
-<li><a href="#_request_parameters_3">2.3.2. Request Parameters</a></li>
-<li><a href="#_return_parameters_2">2.3.3. Return Parameters</a></li>
+<li><a href="#_request_parameters_3">2.3.1. Request Parameters</a></li>
+<li><a href="#_return_parameters_2">2.3.2. Return Parameters</a></li>
 </ul>
 </li>
 <li><a href="#_query_refund">2.4. Query Refund</a>
 <ul class="sectlevel3">
-<li><a href="#_request_method_4">2.4.1. Request Method</a></li>
-<li><a href="#_request_parameters_4">2.4.2. Request Parameters</a></li>
-<li><a href="#_return_data">2.4.3. Return Data</a></li>
+<li><a href="#_request_parameters_4">2.4.1. Request Parameters</a></li>
+<li><a href="#_return_data">2.4.2. Return Data</a></li>
 </ul>
 </li>
 </ul>
@@ -572,9 +567,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#交易凭证样例">3.2. Transaction Credential Sample</a></li>
 <li><a href="#交易凭证详情">3.3. Transaction Credential Details</a></li>
 <li><a href="#_channel_extra_parameters">3.4. Channel Extra Parameters</a></li>
-<li><a href="#订单状态">3.5. Order Status Form</a></li>
-<li><a href="#退款状态">3.6. Refund Status Form</a></li>
-<li><a href="#_currency_type_form">3.7. Currency Type  Form</a></li>
+<li><a href="#_currency_type_form">3.5. Currency Type  Form</a></li>
 </ul>
 </li>
 </ul>
@@ -591,7 +584,7 @@ API Document for IBS Payment Gateway
 <ul>
 <li>
 <p>2017-09-05<br>
-Start writing</p>
+Version 1.0.0</p>
 </li>
 </ul>
 </div>
@@ -844,499 +837,74 @@ signature.update(contentBytes);
 </div>
 <div class="sect3">
 <h4 id="_synchronized_return_parameters"><a class="anchor" href="#_synchronized_return_parameters"></a>2.1.4. Synchronized Return Parameters</h4>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Parameters</th>
-<th class="tableblock halign-left valign-top">Required</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Example</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">appId</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">String(24)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">583128ffef190c52ccec68a8</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">发起支付的应用id</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">chargeNo</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">String(32)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">20150806125346</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">商户系统内部订单号</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">subject</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">String(32)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">iPhone7-32G</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">商品名称</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">remark</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">否</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">String(128)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">订单备注：1.XXXXXXXXX,2.XXXXXXXXX</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">订单备注</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">channel</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">String(20)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ALIPAY_WEB</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">具体Channel Type详见 <a href="#_channel_type">Channel Type</a></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">amount</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Int</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">888</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">订单总金额，单位为分</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">refundedAmount</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Int</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">100</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">已退款总额，单位为分</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">metadata</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">否</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">String(512)</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">元数据，用于携带自定义数据,原样返回,如类似json数据也必须转换为字符串格式</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">credentials</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Map&lt;String,String&gt;</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">详见<a href="#交易凭证样例">Transaction Credential Sample</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">交易凭证,渠道最终返回的连接或者最终请求参数,用于客户端发起交易，见<a href="#交易凭证详情">Transaction Credential Details</a></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">status</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">SUCCEEDED</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">具体详见<a href="#订单状态">Order Status Form</a></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">errorMessage</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">否</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">String(128)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">退款总额超出订单金额</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">发生错误时的错误描述参数</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">startedAt</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">否</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Date</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1482389429010</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">从1970年1月1日00：00至今的毫秒时间</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">completedAt</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">否</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Date</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1482389429010</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">从1970年1月1日00：00至今的毫秒时间。成功或失败时有值</p></td>
-</tr>
-</tbody>
-</table>
+<div class="paragraph">
+<p>After the perfect.</p>
+</div>
 </div>
 <div class="sect3">
 <h4 id="_asynchronous_notification_parameters"><a class="anchor" href="#_asynchronous_notification_parameters"></a>2.1.5. Asynchronous Notification Parameters</h4>
-<table id="订单异步通知参数" class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Parameters</th>
-<th class="tableblock halign-left valign-top">Required</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Example</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">appId</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">String(24)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">583128ffef190c52ccec68a8</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">订单的发起appId</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">chargeNo</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">String(32)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">20150806125346</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">商户收款单号</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">subject</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">String(32)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">iPhone7-32G</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">商品名称</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">remark</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">否</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">String(1000)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">退单备注：1.XXXXXXXXX,2.XXXXXXXXX</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">退单备注</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">channel</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">String(20)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ALIPAY_WEB</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">具体Channel Type详见 <a href="#_channel_type">Channel Type</a></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">amount</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Int</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">100</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">订单总金额，单位为分</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">refundedAmount</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Int</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">100</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">已退款总额，单位为分</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">metadata</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">否</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">String(512)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&#8230;&#8203;</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">元数据，用于携带自定义数据,原样返回,如类似json数据也必须转换为字符串格式</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">status</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">SUCCEEDED</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">具体详见<a href="#订单状态">Order Status Form</a></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">errorMessage</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">否</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">String(128)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">退款总额超出订单金额</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">发生错误时的错误描述参数</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">startedAt</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">否</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Date</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1482389429010</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">退款申请成功的时间，从1970年1月1日00：00至今的毫秒时间</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">completedAt</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">否</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Date</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1482389429010</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">从1970年1月1日00：00至今的毫秒时间。成功或失败时有值</p></td>
-</tr>
-</tbody>
-</table>
+<div class="paragraph">
+<p>After the perfect.</p>
+</div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_submit_refund_api"><a class="anchor" href="#_submit_refund_api"></a>2.2. Submit Refund API</h3>
-<div class="sect3">
-<h4 id="_request_method_2"><a class="anchor" href="#_request_method_2"></a>2.2.1. Request Method</h4>
-<div class="listingblock">
-<div class="content">
-<pre>POST /refunds</pre>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_request_parameters_2"><a class="anchor" href="#_request_parameters_2"></a>2.2.2. Request Parameters</h4>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Parameters</th>
-<th class="tableblock halign-left valign-top">Required</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Example</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">chargeNo</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">String(32)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">20150806125346</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">商户收款单号</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">refundNo</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">String(32)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1217752501201407033233368018</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">商户系统内部的退款单号，商户系统内部唯一，同一退款单号多次请求只退一笔</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">amount</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Int</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">100</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">退款总金额，订单总金额，单位为分，只能为整数</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">remark</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">否</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">String(128)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">退单备注：1.XXXXXXXXX,2.XXXXXXXXX</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">退单备注</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">metadata</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">否</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">String(512)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&#8230;&#8203;</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">元数据，用于携带自定义数据,原样返回,如类似json数据也必须转换为字符串格式</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">notifyUrl</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">String(100)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">https://api.payingcloud.cn/callback</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">支付成功后返回支付结果地址，必须为公网地址，如不填将发送到在控制台配置的Webhooks地址，如也没配置Webhooks地址的话将不发送通知</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect3">
-<h4 id="_return_parameters"><a class="anchor" href="#_return_parameters"></a>2.2.3. Return Parameters</h4>
-<table id="退款同步参数" class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Parameters</th>
-<th class="tableblock halign-left valign-top">Required</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Example</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">appId</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">String(24)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">583128ffef190c52ccec68a8</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">退款单的发起app</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">refundNo</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">String(32)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1217752501201407033233368018</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">商户系统内部的退款单号，商户系统内部唯一，同一退款单号多次请求只退一笔</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">chargeNo</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">String(32)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">20150806125346</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">商户收款单号</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">channel</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">String(20)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ALIPAY_WEB</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">收款Channel Type详见 <a href="#_channel_type">Channel Type</a></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">amount</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Int</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">100</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">退款总金额，订单总金额，单位为分，只能为整数</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">remark</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">否</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">String(128)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">退单备注：1.XXXXXXXXX,2.XXXXXXXXX</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">退单备注</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">metadata</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">否</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">String(512)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&#8230;&#8203;</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">元数据，用于携带自定义数据,原样返回,如类似json数据也必须转换为字符串格式</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">status</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">SUCCEEDED</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">具体详见<a href="#订单状态">Order Status Form</a></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">errorMessage</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">否</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">String(128)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">退款总额超出订单金额</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">发生错误时的错误描述参数</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">startedAt</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">否</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Date</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1482389429010</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">退款申请成功的时间，从1970年1月1日00：00至今的毫秒时间</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">completedAt</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">否</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Date</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1482389429010</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">完成时间，从1970年1月1日00：00至今的毫秒时间。成功或失败时有值</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect3">
-<h4 id="_asynchronous_notification_parameters_2"><a class="anchor" href="#_asynchronous_notification_parameters_2"></a>2.2.4. Asynchronous Notification Parameters</h4>
 <div class="paragraph">
-<p>和<a href="#退款同步参数">[退款同步参数]</a>相同</p>
+<p>After the perfect.</p>
+</div>
+<div class="sect3">
+<h4 id="_request_parameters_2"><a class="anchor" href="#_request_parameters_2"></a>2.2.1. Request Parameters</h4>
+<div class="paragraph">
+<p>After the perfect.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_return_parameters"><a class="anchor" href="#_return_parameters"></a>2.2.2. Return Parameters</h4>
+<div class="paragraph">
+<p>After the perfect.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_asynchronous_notification_parameters_2"><a class="anchor" href="#_asynchronous_notification_parameters_2"></a>2.2.3. Asynchronous Notification Parameters</h4>
+<div class="paragraph">
+<p>After the perfect.</p>
 </div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_query_order"><a class="anchor" href="#_query_order"></a>2.3. Query Order</h3>
-<div class="sect3">
-<h4 id="_request_method_3"><a class="anchor" href="#_request_method_3"></a>2.3.1. Request Method</h4>
-<div class="listingblock">
-<div class="content">
-<pre>GET /charges/{chargeNo}</pre>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_request_parameters_3"><a class="anchor" href="#_request_parameters_3"></a>2.3.2. Request Parameters</h4>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Parameters</th>
-<th class="tableblock halign-left valign-top">Required</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Example</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">chargeNo</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">String(32)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">20150806125346</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">商户订单号，是在请求连接最后的部分添加的参数，是url参数</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect3">
-<h4 id="_return_parameters_2"><a class="anchor" href="#_return_parameters_2"></a>2.3.3. Return Parameters</h4>
 <div class="paragraph">
-<p><span class="big">和<a href="#订单异步通知参数">[订单异步通知参数]</a>参数相同</span></p>
+<p>After the perfect.</p>
+</div>
+<div class="sect3">
+<h4 id="_request_parameters_3"><a class="anchor" href="#_request_parameters_3"></a>2.3.1. Request Parameters</h4>
+<div class="paragraph">
+<p>After the perfect.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_return_parameters_2"><a class="anchor" href="#_return_parameters_2"></a>2.3.2. Return Parameters</h4>
+<div class="paragraph">
+<p>After the perfect.</p>
 </div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_query_refund"><a class="anchor" href="#_query_refund"></a>2.4. Query Refund</h3>
-<div class="sect3">
-<h4 id="_request_method_4"><a class="anchor" href="#_request_method_4"></a>2.4.1. Request Method</h4>
-<div class="listingblock">
-<div class="content">
-<pre>GET /refunds/{refundNo}</pre>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_request_parameters_4"><a class="anchor" href="#_request_parameters_4"></a>2.4.2. Request Parameters</h4>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Parameters</th>
-<th class="tableblock halign-left valign-top">Required</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Example</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">refundNo</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">String(32)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">20150806125346</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">商户退款号，是在请求连接最后的部分添加的参数，是url参数</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect3">
-<h4 id="_return_data"><a class="anchor" href="#_return_data"></a>2.4.3. Return Data</h4>
 <div class="paragraph">
-<p>返回参数和<a href="#退款同步参数">[退款同步参数]</a>相同</p>
+<p>After the perfect.</p>
+</div>
+<div class="sect3">
+<h4 id="_request_parameters_4"><a class="anchor" href="#_request_parameters_4"></a>2.4.1. Request Parameters</h4>
+<div class="paragraph">
+<p>After the perfect.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_return_data"><a class="anchor" href="#_return_data"></a>2.4.2. Return Data</h4>
+<div class="paragraph">
+<p>After the perfect.</p>
 </div>
 </div>
 </div>
@@ -1418,7 +986,7 @@ signature.update(contentBytes);
 <div class="ulist">
 <ul>
 <li>
-<p>从credentials中获取键: <strong>url</strong></p>
+<p>Get: <strong>url</strong> from credentials</p>
 </li>
 </ul>
 </div>
@@ -1455,7 +1023,7 @@ signature.update(contentBytes);
 <div class="ulist">
 <ul>
 <li>
-<p>从credentials中获取键: <strong>html</strong>(utf-8)</p>
+<p>Get <strong>html</strong>(utf-8)  from credentials</p>
 </li>
 </ul>
 </div>
@@ -1475,7 +1043,7 @@ servletResponse.getWriter().write(charge.getCredentials().get(<span class="strin
 <div class="ulist">
 <ul>
 <li>
-<p>从credentials中获取键: <strong>html</strong>(gbk)</p>
+<p>Get  <strong>html</strong>(gbk) from credentials</p>
 </li>
 </ul>
 </div>
@@ -1495,7 +1063,7 @@ servletResponse.getWriter().write(charge.getCredentials().get(<span class="strin
 <div class="ulist">
 <ul>
 <li>
-<p>从credentials中获取键: <strong>url</strong>(图片地址)</p>
+<p>Get <strong>url</strong> from credentials</p>
 </li>
 </ul>
 </div>
@@ -1541,7 +1109,7 @@ servletResponse.getWriter().write(charge.getCredentials().get(<span class="strin
 <div class="ulist">
 <ul>
 <li>
-<p>从credentials中获取键: <strong>codeUrl</strong>(生成二维码的字符串)</p>
+<p>Get <strong>codeUrl</strong> from credentials</p>
 </li>
 </ul>
 </div>
@@ -1560,7 +1128,7 @@ servletResponse.getWriter().write(charge.getCredentials().get(<span class="strin
 <div class="ulist">
 <ul>
 <li>
-<p>从credentials中获取键:</p>
+<p>Get form credentials:</p>
 <div class="ulist">
 <ul>
 <li>
@@ -1588,10 +1156,6 @@ servletResponse.getWriter().write(charge.getCredentials().get(<span class="strin
 </div>
 </li>
 </ul>
-</div>
-<div class="paragraph">
-<p>在页面调用微信jsSDk
-详情见 <a href="https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=7_7&amp;index=6">微信公众号h5调用文档</a></p>
 </div>
 </div>
 <div class="sect2">
@@ -2090,65 +1654,7 @@ servletResponse.getWriter().write(charge.getCredentials().get(<span class="strin
 </table>
 </div>
 <div class="sect2">
-<h3 id="订单状态"><a class="anchor" href="#订单状态"></a>3.5. Order Status Form</h3>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">参数名</th>
-<th class="tableblock halign-left valign-top">含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>STARTED</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">支付开始（即支付中）</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>SUCCEEDED</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">支付成功</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>FAILED</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">支付失败</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect2">
-<h3 id="退款状态"><a class="anchor" href="#退款状态"></a>3.6. Refund Status Form</h3>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">参数名</th>
-<th class="tableblock halign-left valign-top">含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>STARTED</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">退款开始</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>SUCCEEDED</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">退款成功</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>FAILED</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">退款失败</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect2">
-<h3 id="_currency_type_form"><a class="anchor" href="#_currency_type_form"></a>3.7. Currency Type  Form</h3>
+<h3 id="_currency_type_form"><a class="anchor" href="#_currency_type_form"></a>3.5. Currency Type  Form</h3>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 50%;">
@@ -2212,8 +1718,7 @@ servletResponse.getWriter().write(charge.getCredentials().get(<span class="strin
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 0.0<br>
-Last updated 2017-09-21 10:49:33 +08:00
+Last updated 2017-09-21 16:31:08 CST
 </div>
 </div>
 </body>

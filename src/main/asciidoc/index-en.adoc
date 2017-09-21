@@ -1,5 +1,4 @@
 = API Document for IBS Payment Gateway
-paid
 v0.0, 2017-09-05
 :doctype: article
 :description: IBS Payment Gateway API
@@ -26,7 +25,7 @@ API Document for IBS Payment Gateway
 === Version
 
 * 2017-09-05 +
-Start writing
+Version 1.0.0
 
 
 === Global Planning
@@ -193,365 +192,44 @@ POST /charges
 | Specifies the callback address for receiving payment notifications.
 
 |===
-
 ==== Synchronized Return Parameters
-
-[align="center"]
-|===
-|Parameters |Required |Type |Example |Description
-
-| appId
-| 是
-| String(24)
-| 583128ffef190c52ccec68a8
-| 发起支付的应用id
-
-
-| chargeNo
-| 是
-| String(32)
-| 20150806125346
-| 商户系统内部订单号
-
-
-| subject
-| 是
-| String(32)
-| iPhone7-32G
-| 商品名称
-
-
-| remark
-| 否
-| String(128)
-| 订单备注：1.XXXXXXXXX,2.XXXXXXXXX
-| 订单备注
-
-
-| channel
-| 是
-| String(20)
-| ALIPAY_WEB
-| 具体Channel Type详见 <<Channel Type>>
-
-
-| amount
-| 是
-| Int
-| 888
-| 订单总金额，单位为分
-
-
-| refundedAmount
-| 是
-| Int
-| 100
-| 已退款总额，单位为分
-
-
-| metadata
-| 否
-| String(512)
-|
-| 元数据，用于携带自定义数据,原样返回,如类似json数据也必须转换为字符串格式
-
-
-| credentials
-| 是
-| Map<String,String>
-| 详见<<交易凭证样例>>
-| 交易凭证,渠道最终返回的连接或者最终请求参数,用于客户端发起交易，见<<交易凭证详情>>
-
-| status
-| 是
-| String
-| SUCCEEDED
-| 具体详见<<订单状态>>
-
-| errorMessage
-| 否
-| String(128)
-| 退款总额超出订单金额
-| 发生错误时的错误描述参数
-
-| startedAt
-| 否
-| Date
-| 1482389429010
-| 从1970年1月1日00：00至今的毫秒时间
-
-
-| completedAt
-| 否
-| Date
-| 1482389429010
-| 从1970年1月1日00：00至今的毫秒时间。成功或失败时有值
-|===
+After the perfect.
 
 ==== Asynchronous Notification Parameters
-[[订单异步通知参数]]
-
-[align="center"]
-|===
-|Parameters |Required |Type |Example |Description
-
-
-| appId
-| 是
-| String(24)
-| 583128ffef190c52ccec68a8
-| 订单的发起appId
-
-
-| chargeNo
-| 是
-| String(32)
-| 20150806125346
-| 商户收款单号
-
-| subject
-| 是
-| String(32)
-| iPhone7-32G
-| 商品名称
-
-| remark
-| 否
-| String(1000)
-| 退单备注：1.XXXXXXXXX,2.XXXXXXXXX
-| 退单备注
-
-
-| channel
-| 是
-| String(20)
-| ALIPAY_WEB
-| 具体Channel Type详见 <<Channel Type>>
-
-
-| amount
-| 是
-| Int
-| 100
-| 订单总金额，单位为分
-
-
-| refundedAmount
-| 是
-| Int
-| 100
-| 已退款总额，单位为分
-
-
-| metadata
-| 否
-| String(512)
-| ...
-| 元数据，用于携带自定义数据,原样返回,如类似json数据也必须转换为字符串格式
-
-| status
-| 是
-| String
-| SUCCEEDED
-| 具体详见<<订单状态>>
-
-| errorMessage
-| 否
-| String(128)
-| 退款总额超出订单金额
-| 发生错误时的错误描述参数
-
-
-| startedAt
-| 否
-| Date
-| 1482389429010
-| 退款申请成功的时间，从1970年1月1日00：00至今的毫秒时间
-
-| completedAt
-| 否
-| Date
-| 1482389429010
-| 从1970年1月1日00：00至今的毫秒时间。成功或失败时有值
-|===
+After the perfect.
 
 === Submit Refund API
+After the perfect.
 
-==== Request Method
-----
-POST /refunds
-----
 ==== Request Parameters
-
-[align="center"]
-|===
-|Parameters |Required |Type |Example |Description
-
-| chargeNo
-| 是
-| String(32)
-| 20150806125346
-| 商户收款单号
-
-
-| refundNo
-| 是
-| String(32)
-| 1217752501201407033233368018
-| 商户系统内部的退款单号，商户系统内部唯一，同一退款单号多次请求只退一笔
-
-| amount
-| 是
-| Int
-| 100
-| 退款总金额，订单总金额，单位为分，只能为整数
-
-| remark
-| 否
-| String(128)
-| 退单备注：1.XXXXXXXXX,2.XXXXXXXXX
-| 退单备注
-
-| metadata
-| 否
-| String(512)
-| ...
-| 元数据，用于携带自定义数据,原样返回,如类似json数据也必须转换为字符串格式
-
-| notifyUrl
-| 是
-| String(100)
-| \https://api.payingcloud.cn/callback
-| 支付成功后返回支付结果地址，必须为公网地址，如不填将发送到在控制台配置的Webhooks地址，如也没配置Webhooks地址的话将不发送通知
-|===
+After the perfect.
 
 ==== Return Parameters
-[[退款同步参数]]
-
-[align="center"]
-|===
-|Parameters |Required |Type |Example |Description
-
-| appId
-| 是
-| String(24)
-| 583128ffef190c52ccec68a8
-| 退款单的发起app
-
-| refundNo
-| 是
-| String(32)
-| 1217752501201407033233368018
-| 商户系统内部的退款单号，商户系统内部唯一，同一退款单号多次请求只退一笔
-
-| chargeNo
-| 是
-| String(32)
-| 20150806125346
-| 商户收款单号
-
-| channel
-| 是
-| String(20)
-| ALIPAY_WEB
-| 收款Channel Type详见 <<Channel Type>>
-
-
-| amount
-| 是
-| Int
-| 100
-| 退款总金额，订单总金额，单位为分，只能为整数
-
-| remark
-| 否
-| String(128)
-| 退单备注：1.XXXXXXXXX,2.XXXXXXXXX
-| 退单备注
-
-| metadata
-| 否
-| String(512)
-| ...
-| 元数据，用于携带自定义数据,原样返回,如类似json数据也必须转换为字符串格式
-
-
-| status
-| 是
-| String
-| SUCCEEDED
-| 具体详见<<订单状态>>
-
-
-| errorMessage
-| 否
-| String(128)
-| 退款总额超出订单金额
-| 发生错误时的错误描述参数
-
-| startedAt
-| 否
-| Date
-| 1482389429010
-| 退款申请成功的时间，从1970年1月1日00：00至今的毫秒时间
-
-
-| completedAt
-| 否
-| Date
-| 1482389429010
-| 完成时间，从1970年1月1日00：00至今的毫秒时间。成功或失败时有值
-|===
+After the perfect.
 
 ==== Asynchronous Notification Parameters
 
-和<<退款同步参数>>相同
+After the perfect.
 
 === Query Order
+After the perfect.
 
-==== Request Method
-----
-GET /charges/{chargeNo}
-----
 ==== Request Parameters
 
-[align="center"]
-|===
-|Parameters |Required |Type |Example |Description
-
-| chargeNo
-| 是
-| String(32)
-| 20150806125346
-| 商户订单号，是在请求连接最后的部分添加的参数，是url参数
-|===
+After the perfect.
 
 ==== Return Parameters
 
-[big]#和<<订单异步通知参数>>参数相同#
+After the perfect.
 
 === Query Refund
+After the perfect.
 
-==== Request Method
-----
-GET /refunds/{refundNo}
-----
 ==== Request Parameters
-
-[align="center"]
-|===
-|Parameters |Required |Type |Example |Description
-
-| refundNo
-| 是
-| String(32)
-| 20150806125346
-| 商户退款号，是在请求连接最后的部分添加的参数，是url参数
-|===
+After the perfect.
 
 ==== Return Data
-
-返回参数和<<退款同步参数>>相同
+After the perfect.
 
 == Remark
 === Channel Type
@@ -601,7 +279,7 @@ GET /refunds/{refundNo}
 
 * BDPAY_WEB
 * BDPAY_WAP
-** 从credentials中获取键: *url*
+** Get: *url* from credentials
 
 [source,java]
 ----
@@ -615,7 +293,7 @@ servletResponse.sendRedirect(charge.getCredentials().get("url"));
 * JDPAY_WAP
 * YEEPAY_WAP
 * ALIPAY_WAP
-** 从credentials中获取键: *html*(utf-8)
+** Get *html*(utf-8)  from credentials
 
 [source,java]
 ----
@@ -624,7 +302,7 @@ servletResponse.getWriter().write(charge.getCredentials().get("html"));
 ----
 
 * YEEPAY_WEB
-** 从credentials中获取键: *html*(gbk)
+** Get  *html*(gbk) from credentials
 
 [source,java]
 ----
@@ -633,7 +311,7 @@ servletResponse.getWriter().write(charge.getCredentials().get("html"));
 ----
 
 * BDPAY_QR
-** 从credentials中获取键: *url*(图片地址)
+** Get *url* from credentials
 
 * WXPAY_NATIVE
 * BJPAY_WX
@@ -648,22 +326,19 @@ servletResponse.getWriter().write(charge.getCredentials().get("html"));
 * CMBCPAY_T0_QQ
 * CMBCPAY_T1_QQ
 * WEBANKPAY_WX_QR
-** 从credentials中获取键: *codeUrl*(生成二维码的字符串)
+** Get *codeUrl* from credentials
 
 * WXPAY_JSAPI
 * CMBCPAY_T0_WX_JSAPI
 * CMBCPAY_T1_WX_JSAPI
 * WEBANKPAY_WX_JSAPI
-** 从credentials中获取键:
+** Get form credentials:
 *** *appId*
 *** *timeStamp*
 *** *nonceStr*
 *** *package*
 *** *signType*
 *** *paySign*
-
-在页面调用微信jsSDk
-详情见 https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=7_7&index=6[微信公众号h5调用文档]
 
 === Channel Extra Parameters
 
@@ -860,7 +535,6 @@ servletResponse.getWriter().write(charge.getCredentials().get("html"));
 |String
 
 
-
 |citizen_id_number
 |YES
 |Citizen id number.
@@ -1028,42 +702,6 @@ servletResponse.getWriter().write(charge.getCredentials().get("html"));
 |1.22354E+22
 |This field is only required when trade_type is NATIVE. This ID contains the product ID as set by the Vendor.
 
-|===
-
-
-[[订单状态]]
-=== Order Status Form
-
-[align="center"]
-|===
-| 参数名 | 含义
-
-| *STARTED*
-| 支付开始（即支付中）
-
-| *SUCCEEDED*
-| 支付成功
-
-| *FAILED*
-| 支付失败
-|===
-
-[[退款状态]]
-=== Refund Status Form
-
-[align="center"]
-
-|===
-| 参数名 | 含义
-
-| *STARTED*
-| 退款开始
-
-| *SUCCEEDED*
-| 退款成功
-
-| *FAILED*
-| 退款失败
 |===
 
 === Currency Type  Form
