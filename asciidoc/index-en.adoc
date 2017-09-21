@@ -1,0 +1,1111 @@
+= API Document for IBS Payment Gateway
+paid
+v0.0, 2017-09-05
+:doctype: article
+:description: IBS Payment Gateway API
+:keywords: IBS Payment Gateway,API
+:sectlinks:
+:sectanchors:
+:sectnums:
+:source-highlighter: coderay
+:icons: font
+:toclevels: 4
+:encoding: utf-8
+:imagesdir: images
+:toc: left
+:toc-title: Contents
+:experimental:
+:font: Microsoft YaHei
+
+== Description of The Document
+
+++++
+API Document for IBS Payment Gateway
+++++
+
+=== Version
+
+* 2017-09-05 +
+Start writing
+
+
+=== Global Planning
+
+* Server address: \https://api.payingcloud.cn
+* Data Format: json
+* The asynchronous notification interface must return "success" when it was completed.
+
+=== Signature Rules
+
+HTTP requests should add a kbd:[*Authorization*]' Header to include ‘Signature’that the message has been authorized.
+
+.Signature
+[source,Java]
+----
+ HmacUtils.hmacSha1Hex(               //<1>
+                key,                  //<2>
+                verb + "\n" +         //<3><4>
+                resource + "\n" +     //<5>
+                body + "\n" +         //<6>
+                timestamp + "\n");    //<7>
+----
+<1> Using hmacSha1 algorithm to get the M-16.
+<2> kbd:[*key*]——Signature required keys that is generated in the console.
+<3> kbd:[*verb*]——HTTP request Method that include PUT, GET, POST, HEAD, DELETE.
+<4> kbd:[*\n*]——newline
+<5> kbd:[*resource*]——Stitching parameter string is used for the request interface.
+kbd:[*path*]+kbd:[*?*]+kbd:[*query*]
+<6> kbd:[*body*]——Content of the request body
+<7> kbd:[*timestamp*]——Said the operation time, and must be in GMT format,like "Sun, 22 Nov 2015 08:16:38 GMT". This timestamp will also be added to * Header *,and the key is * Date *. +
+
+.Remark
+____
+The signature body of the HttpMethod without the request body is represented by an empty string.
+____
+
+.For Example:
+[source,Java]
+----
+HmacUtils.hmacSha1Hex("3zKciJOwhWE4SSRUxXzCsABcIhJWd5Gb",
+                      "POST" + "\n" +
+                      "/charges?a=a&b=b&c=c" + "\n" +
+                      "{"a":"a","b":"b","c":"c"}" + "\n" +
+                      "Sun, 22 Nov 2015 08:16:38 GMT" + "\n"
+----
+
+Add your signature to kbd:[*accessKeyId*],then base64 encoding.Add the result to the kbd:[*Basic* + *blank*] to  compose kbd:[*Authorization*].
+
+.Authorization
+[source,java]
+----
+"Basic " + Base64.encodeBase64String((accessKeyId + ":" + signature).getBytes()));
+----
+
+.Final Header
+[source,Header]
+----
+Content-Type:application/json; charset=UTF-8
+Authorization:Basic NTgzMTM1NDZlZjE5MGM1MWMwYmVhYzZmOjA2NzY2NTUwMzdhOTQyZDc5M2JjOGM5YzRmNzE5M2QzZTRhYjY5YjE=
+Date:Tue, 13 Dec 2016 03:22:13 GMT
+----
+
+=== Checking Steps
+In order to prevent damage caused by hackers fake transaction results,all asynchronous notification using RSA signatures were sent to the merchant.And put the signature with Base64 encoding in Http request headers kbd: [*sign*].Developers need to use SHA1WithRSA algorithm and IBS provides RSA public key to validate it. +
+
+.For Example:
+[source,Java]
+----
+// Gets a signature from asynchronous notification request headers.
+String sign = request.getHeader("sign");
+// Using base64 decoding the signature String to bytes.
+byte[] signBytes = Base64.decodeBase64(sign)
+//Gets the asynchronous notification request body.
+String content = ...
+// Using UTF-8 character to decode the request body.
+byte[] contentBytes = content.getBytes("UTF-8")
+// SHA1WithRSA algorithm is used to validate it.
+KeyFactory keyFactory = KeyFactory.getInstance("RSA");
+byte[] encodedKey = Base64.decodeBase64(PayingCloud.DEFAULT_PUBLIC_KEY); // 使用PayingCloud提供的RSA公钥
+PublicKey key = keyFactory.generatePublic(new X509EncodedKeySpec(encodedKey));
+Signature signature = Signature.getInstance("SHA1WithRSA"); // 验签算法SHA1WithRSA
+signature.initVerify(key);
+signature.update(contentBytes);
+return signature.verify(signBytes);
+----
+
+.IBS RSA Public Key
+[source,PublicKey]
+----
+MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCPymtLbRkHgvVfUT933LrwWns6YZHLPpT1pP9TKJ+cgIZiQwZ4mtqoqPHSVtiT5HA8fwFzWuJ/6qWaQhER7TOISUFUHZlHyBjNK/Z5px6PNB7rT4OrLP0KuZ7nuX5qdnOKuAbrj1MBLSinOHQ8tDJhPrPKxuZlKw3SeL5auHlKWwIDAQAB
+----
+
+== OPEN API
+
+=== Payment Interface
+
+==== Interfaces Overview
+Payment process shown in the following figure: +
+
+image::payment-flowchart.png[scaledwidth=100%,align="center"]
+
+==== Request Method
+----
+POST /charges
+----
+==== Request Parameters
+
+[align="center"]
+|===
+|Parameters |Required |Type |Example |Description
+
+| mer_order_no
+| Yes
+| String(32)
+| 20150806125346
+| Vendor Order Number,Lengths from 4 to 32 characters.
+
+| subject
+| Yes
+| String(128)
+| iPhone7-32G
+| Item Details
+
+| total
+| Yes
+| Int
+| 888
+| The total amount charged or refunded. The units are expressed in cents and must be an integer.
+
+| currency
+| Yes
+| String(16)
+| GBP
+| ISO-4217 standard compliant and be described by three characters based code. For more information, see <<Currency Type  Form>>.
+
+|channel
+|YES
+|Enum
+|UMF_CREDIT_CARD
+|Channel Type. For more information, see <<Channel Type>>.
+
+|external_customer_id
+|NO
+|String
+|oUpF8uMuAJO_M2pxb1Q9zNjWeS6o
+|The customer unique id in merchant system.Lengths from 1 to 32 characters.
+
+|user_ip
+|YES
+|String(16)
+|123.12.12.123
+|This is the IP address when a customer makes a payment request.
+
+| extra
+| YES
+| Map<String, Object>
+| {"returnUrl": "https://api.payingcloud.cn/returnUrl"}
+| Channel Extra Parameters.Map of key-value pairs store between the different channels of <<Channel Extra Parameters>>.
+
+| notifyUrl
+| YES
+| String(100)
+| \https://api.payingcloud.cn/callback
+| Specifies the callback address for receiving payment notifications.
+
+|===
+
+==== Synchronized Return Parameters
+
+[align="center"]
+|===
+|Parameters |Required |Type |Example |Description
+
+| appId
+| 是
+| String(24)
+| 583128ffef190c52ccec68a8
+| 发起支付的应用id
+
+
+| chargeNo
+| 是
+| String(32)
+| 20150806125346
+| 商户系统内部订单号
+
+
+| subject
+| 是
+| String(32)
+| iPhone7-32G
+| 商品名称
+
+
+| remark
+| 否
+| String(128)
+| 订单备注：1.XXXXXXXXX,2.XXXXXXXXX
+| 订单备注
+
+
+| channel
+| 是
+| String(20)
+| ALIPAY_WEB
+| 具体Channel Type详见 <<Channel Type>>
+
+
+| amount
+| 是
+| Int
+| 888
+| 订单总金额，单位为分
+
+
+| refundedAmount
+| 是
+| Int
+| 100
+| 已退款总额，单位为分
+
+
+| metadata
+| 否
+| String(512)
+|
+| 元数据，用于携带自定义数据,原样返回,如类似json数据也必须转换为字符串格式
+
+
+| credentials
+| 是
+| Map<String,String>
+| 详见<<交易凭证样例>>
+| 交易凭证,渠道最终返回的连接或者最终请求参数,用于客户端发起交易，见<<交易凭证详情>>
+
+| status
+| 是
+| String
+| SUCCEEDED
+| 具体详见<<订单状态>>
+
+| errorMessage
+| 否
+| String(128)
+| 退款总额超出订单金额
+| 发生错误时的错误描述参数
+
+| startedAt
+| 否
+| Date
+| 1482389429010
+| 从1970年1月1日00：00至今的毫秒时间
+
+
+| completedAt
+| 否
+| Date
+| 1482389429010
+| 从1970年1月1日00：00至今的毫秒时间。成功或失败时有值
+|===
+
+==== Asynchronous Notification Parameters
+[[订单异步通知参数]]
+
+[align="center"]
+|===
+|Parameters |Required |Type |Example |Description
+
+
+| appId
+| 是
+| String(24)
+| 583128ffef190c52ccec68a8
+| 订单的发起appId
+
+
+| chargeNo
+| 是
+| String(32)
+| 20150806125346
+| 商户收款单号
+
+| subject
+| 是
+| String(32)
+| iPhone7-32G
+| 商品名称
+
+| remark
+| 否
+| String(1000)
+| 退单备注：1.XXXXXXXXX,2.XXXXXXXXX
+| 退单备注
+
+
+| channel
+| 是
+| String(20)
+| ALIPAY_WEB
+| 具体Channel Type详见 <<Channel Type>>
+
+
+| amount
+| 是
+| Int
+| 100
+| 订单总金额，单位为分
+
+
+| refundedAmount
+| 是
+| Int
+| 100
+| 已退款总额，单位为分
+
+
+| metadata
+| 否
+| String(512)
+| ...
+| 元数据，用于携带自定义数据,原样返回,如类似json数据也必须转换为字符串格式
+
+| status
+| 是
+| String
+| SUCCEEDED
+| 具体详见<<订单状态>>
+
+| errorMessage
+| 否
+| String(128)
+| 退款总额超出订单金额
+| 发生错误时的错误描述参数
+
+
+| startedAt
+| 否
+| Date
+| 1482389429010
+| 退款申请成功的时间，从1970年1月1日00：00至今的毫秒时间
+
+| completedAt
+| 否
+| Date
+| 1482389429010
+| 从1970年1月1日00：00至今的毫秒时间。成功或失败时有值
+|===
+
+=== Submit Refund API
+
+==== Request Method
+----
+POST /refunds
+----
+==== Request Parameters
+
+[align="center"]
+|===
+|Parameters |Required |Type |Example |Description
+
+| chargeNo
+| 是
+| String(32)
+| 20150806125346
+| 商户收款单号
+
+
+| refundNo
+| 是
+| String(32)
+| 1217752501201407033233368018
+| 商户系统内部的退款单号，商户系统内部唯一，同一退款单号多次请求只退一笔
+
+| amount
+| 是
+| Int
+| 100
+| 退款总金额，订单总金额，单位为分，只能为整数
+
+| remark
+| 否
+| String(128)
+| 退单备注：1.XXXXXXXXX,2.XXXXXXXXX
+| 退单备注
+
+| metadata
+| 否
+| String(512)
+| ...
+| 元数据，用于携带自定义数据,原样返回,如类似json数据也必须转换为字符串格式
+
+| notifyUrl
+| 是
+| String(100)
+| \https://api.payingcloud.cn/callback
+| 支付成功后返回支付结果地址，必须为公网地址，如不填将发送到在控制台配置的Webhooks地址，如也没配置Webhooks地址的话将不发送通知
+|===
+
+==== Return Parameters
+[[退款同步参数]]
+
+[align="center"]
+|===
+|Parameters |Required |Type |Example |Description
+
+| appId
+| 是
+| String(24)
+| 583128ffef190c52ccec68a8
+| 退款单的发起app
+
+| refundNo
+| 是
+| String(32)
+| 1217752501201407033233368018
+| 商户系统内部的退款单号，商户系统内部唯一，同一退款单号多次请求只退一笔
+
+| chargeNo
+| 是
+| String(32)
+| 20150806125346
+| 商户收款单号
+
+| channel
+| 是
+| String(20)
+| ALIPAY_WEB
+| 收款Channel Type详见 <<Channel Type>>
+
+
+| amount
+| 是
+| Int
+| 100
+| 退款总金额，订单总金额，单位为分，只能为整数
+
+| remark
+| 否
+| String(128)
+| 退单备注：1.XXXXXXXXX,2.XXXXXXXXX
+| 退单备注
+
+| metadata
+| 否
+| String(512)
+| ...
+| 元数据，用于携带自定义数据,原样返回,如类似json数据也必须转换为字符串格式
+
+
+| status
+| 是
+| String
+| SUCCEEDED
+| 具体详见<<订单状态>>
+
+
+| errorMessage
+| 否
+| String(128)
+| 退款总额超出订单金额
+| 发生错误时的错误描述参数
+
+| startedAt
+| 否
+| Date
+| 1482389429010
+| 退款申请成功的时间，从1970年1月1日00：00至今的毫秒时间
+
+
+| completedAt
+| 否
+| Date
+| 1482389429010
+| 完成时间，从1970年1月1日00：00至今的毫秒时间。成功或失败时有值
+|===
+
+==== Asynchronous Notification Parameters
+
+和<<退款同步参数>>相同
+
+=== Query Order
+
+==== Request Method
+----
+GET /charges/{chargeNo}
+----
+==== Request Parameters
+
+[align="center"]
+|===
+|Parameters |Required |Type |Example |Description
+
+| chargeNo
+| 是
+| String(32)
+| 20150806125346
+| 商户订单号，是在请求连接最后的部分添加的参数，是url参数
+|===
+
+==== Return Parameters
+
+[big]#和<<订单异步通知参数>>参数相同#
+
+=== Query Refund
+
+==== Request Method
+----
+GET /refunds/{refundNo}
+----
+==== Request Parameters
+
+[align="center"]
+|===
+|Parameters |Required |Type |Example |Description
+
+| refundNo
+| 是
+| String(32)
+| 20150806125346
+| 商户退款号，是在请求连接最后的部分添加的参数，是url参数
+|===
+
+==== Return Data
+
+返回参数和<<退款同步参数>>相同
+
+== Remark
+=== Channel Type
+[align="center"]
+|===
+|Name |Description
+
+|UMF_CREDIT_CARD
+|UMF_Pay by credit card.
+
+|UMF_DEBIT_CARD
+|UMF_ Pay by debit card.
+
+|UMF_WECHAT_SCAN
+|UMF return a QR-Code String. The customer may use their WeChat scan the QR-Code to pay.
+
+|UMF_WECHAT_WEB
+|UMF_The customer may pay for the order inside the WeChat browser.
+
+|UMF_WECHAT_IN_APP
+|UMF_The customer may pay for the order inside a native app.
+
+|UMF_ALIPAY_SCAN
+|UMF returns a QR-Code String. The customer may use their Alipay to scan the QR-Code to pay.
+
+|WX_CODE
+|The Vendor generates a transaction QR Code according to the WeChat Payment Protocol and the Payer goes to "Scan QR Code" in their WeChat in order to complete payment.
+
+|WX_APP
+|In-App payment also refers to a mobile-based payment in which the Vendor calls the WeChat payment module by using the open SDK integrated in their mobile-based app to pay for transactions.
+
+|WX_JSAPI
+|The Payer opens the Vendor's HTML5 pages on their WeChat and calls the WeChat payment module via the JSAPI interface to pay their transaction.
+
+|===
+
+[[交易凭证样例]]
+=== Transaction Credential Sample
+
+[source,json]
+----
+"url":"<form name=\"punchout_form\"method=\"post\" action=\"https://pay.yizhifubj.com/prs/user_payment.checkit?v_md5info=b00a57dc732366cbfed3da03fe064af5&v_orderstatus=1&v_rcvname=9466&v_moneytype=0&v_oid=20161222-9466-585b77b5ab5c986f049a0faa&v_ymd=20161222&v_url=http%3A%2F%2F127.0.0.1%3A9000%2Forder%2Fcharge%2Freturn&v_rcvaddr=9466&v_ordername=9466&v_rcvtel=9466&v_mid=9466&v_amount=0.01&v_rcvpost=9466\">\n<input type=\"submit\" value=\"[0xe7][0xab][0x8b][0xe5][0x8d][0xb3][0xe6][0x94][0xaf][0xe4][0xbb][0x98]\" style=\"display:none\" >\n</form>\n<script>document.forms[0].submit();</script>"
+----
+
+[[交易凭证详情]]
+=== Transaction Credential Details
+
+* BDPAY_WEB
+* BDPAY_WAP
+** 从credentials中获取键: *url*
+
+[source,java]
+----
+servletResponse.sendRedirect(charge.getCredentials().get("url"));
+----
+
+* ALIPAY_DIRECT
+* BJPAY_WEB
+* CHINAPAY_WEB
+* JDPAY_WEB
+* JDPAY_WAP
+* YEEPAY_WAP
+* ALIPAY_WAP
+** 从credentials中获取键: *html*(utf-8)
+
+[source,java]
+----
+servletResponse.setContentType("text/html;charset=UTF-8");
+servletResponse.getWriter().write(charge.getCredentials().get("html"));
+----
+
+* YEEPAY_WEB
+** 从credentials中获取键: *html*(gbk)
+
+[source,java]
+----
+servletResponse.setContentType("text/html;charset=gbk");
+servletResponse.getWriter().write(charge.getCredentials().get("html"));
+----
+
+* BDPAY_QR
+** 从credentials中获取键: *url*(图片地址)
+
+* WXPAY_NATIVE
+* BJPAY_WX
+* ALIPAY_QR
+* KFTPAY_WX
+* KFTPAY_ALI
+* JDPAY_QR
+* CMBCPAY_T0_ALI
+* CMBCPAY_T1_ALI
+* CMBCPAY_T0_WX_QR
+* CMBCPAY_T1_WX_QR
+* CMBCPAY_T0_QQ
+* CMBCPAY_T1_QQ
+* WEBANKPAY_WX_QR
+** 从credentials中获取键: *codeUrl*(生成二维码的字符串)
+
+* WXPAY_JSAPI
+* CMBCPAY_T0_WX_JSAPI
+* CMBCPAY_T1_WX_JSAPI
+* WEBANKPAY_WX_JSAPI
+** 从credentials中获取键:
+*** *appId*
+*** *timeStamp*
+*** *nonceStr*
+*** *package*
+*** *signType*
+*** *paySign*
+
+在页面调用微信jsSDk
+详情见 https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=7_7&index=6[微信公众号h5调用文档]
+
+=== Channel Extra Parameters
+
+ * <<UMF_CREDIT_CARD>>
+ * <<UMF_DEBIT_CARD>>
+ * <<UMF_WECHAT__WEB>>
+ * <<三种方式的参数>>
+ * <<微信直接支付>>
+
+[[UMF_CREDIT_CARD]]
+.UMF_CREDIT_CARD
+[align="center"]
+|===
+|Parameter|Required|Description |Constraints
+
+|sub_orders
+|YES
+|Each sub_order can only have same type goods.
+|Object Array.For more information, see <<sub_order>>.
+
+|goods_type
+|YES
+|Category of commodities
+|ENUM:0 virtual goods;1 physical goods
+
+|receiver_name
+|YES
+|Name of the recipient
+|String.When goods_type is either 1 , it is required to send this field.
+
+|receiver_moblie_id
+|YES
+|Phone number of the recipient
+|String.When goods_type is either 1 , it is required to send this field.
+
+|shipping_address
+|YES
+|Address of the recipient
+|String.When goods_type is either 1 , it is required to send this field.
+
+|real_name
+|YES
+|Real name purchase
+|ENUM.0 not real name system ;1 real name system
+
+|phone
+|YES
+|The phone number registered in the bank card issuer.
+|String
+
+|card_holder
+|YES
+|The name of card holder.
+|String
+
+
+
+|citizen_id_number
+|YES
+|Citizen id number.
+|String
+
+|bank_code
+|YES
+|The abbreviation of bank.
+|String.
+
+|number
+|YES
+|The card number.
+|String
+
+|valid_date
+|YES
+|The valid date of bank card.
+|String
+
+|cvv2
+|YES
+|CVV2 of bank card.
+|String
+
+|===
+
+[[UMF_DEBIT_CARD]]
+[align="center"]
+.UMF_DEBIT_CARD
+|===
+|Parameter|Required|Description |Constraints
+
+|sub_orders
+|YES
+|Each sub_order can only have same type goods.
+|Object Array.For more information, see <<sub_order>>.
+
+|goods_type
+|YES
+|Category of commodities
+|ENUM:0 virtual goods;1 physical goods
+
+|receiver_name
+|YES
+|Name of the recipient
+|String.When goods_type is either 1 , it is required to send this field.
+
+|receiver_moblie_id
+|YES
+|Phone number of the recipient
+|String.When goods_type is either 1 , it is required to send this field.
+
+|shipping_address
+|YES
+|Address of the recipient
+|String.When goods_type is either 1 , it is required to send this field.
+
+|real_name
+|YES
+|Real name purchase
+|ENUM.0 not real name system ;1 real name system
+
+|phone
+|YES
+|The phone number registered in the bank card issuer.
+|String
+
+|card_holder
+|YES
+|The name of card holder.
+|String
+
+
+
+|citizen_id_number
+|YES
+|Citizen id number.
+|String
+
+|bank_code
+|YES
+|The abbreviation of bank.
+|String.
+
+|number
+|YES
+|The card number.
+|String
+
+|===
+
+[[UMF_WECHAT__WEB]]
+[align="center"]
+.UMF_WECHAT_WEB
+|===
+|Parameter|Required|Description |Constraints
+
+|sub_orders
+|YES
+|Each sub_order can only have same type goods.
+|Object Array.For more information, see <<sub_order>>.
+
+|goods_type
+|YES
+|Category of commodities
+|ENUM:0 virtual goods;1 physical goods
+
+|receiver_name
+|YES
+|Name of the recipient
+|String.When goods_type is either 1 , it is required to send this field.
+
+|receiver_moblie_id
+|YES
+|Phone number of the recipient
+|String.When goods_type is either 1 , it is required to send this field.
+
+|shipping_address
+|YES
+|Address of the recipient
+|String.When goods_type is either 1 , it is required to send this field.
+
+|real_name
+|YES
+|Real name purchase
+|ENUM.0 not real name system ;1 real name system
+
+|phone
+|YES
+|The payer’s phone number.
+|String
+
+|name
+|YES
+|The name of payer.
+|String
+
+
+
+|citizen_id_number
+|YES
+|Citizen id number.
+|String
+
+|open_id
+|YES
+|The OpenID is a unique encrypted WeChat ID for each user of an official account, and users can have separate OpenIDs corresponding to different official accounts.
+|String.
+
+|===
+
+[[三种方式的参数]]
+[align="center"]
+.UMF_WECHAT_SCAN 、UMF_ALIPAY_SCAN、UMF_WECHAT_IN_APP
+|===
+|Parameter|Required|Description |Constraints
+
+|sub_orders
+|YES
+|Each sub_order can only have same type goods.
+|Object Array.For more information, see <<sub_order>>.
+
+|goods_type
+|YES
+|Category of commodities
+|ENUM:0 virtual goods;1 physical goods
+
+|receiver_name
+|YES
+|Name of the recipient
+|String.When goods_type is either 1 , it is required to send this field.
+
+|receiver_moblie_id
+|YES
+|Phone number of the recipient
+|String.When goods_type is either 1 , it is required to send this field.
+
+|shipping_address
+|YES
+|Address of the recipient
+|String.When goods_type is either 1 , it is required to send this field.
+
+|real_name
+|YES
+|Real name purchase
+|ENUM.0 not real name system ;1 real name system
+
+|phone
+|YES
+|The payer’s phone number.
+|String
+
+|name
+|YES
+|The name of payer.
+|String
+
+
+|citizen_id_number
+|YES
+|Citizen id number.
+|String
+
+|===
+
+[[sub_order]]
+[align="center"]
+.sub_order
+|===
+|Parameter|Required|Description |Constraints
+
+|mer_sub_reference_id
+|YES
+|The ID of sub_order object.
+|Lengths from 4 to 16 characters.
+
+|sub_total
+|YES
+|The amount of sub_order.
+|Maximum length is 12 digits including 2 decimal places.
+
+|rans_code
+|YES
+|The transaction code of goods. 
+|ENUM
+
+|is_customs
+|YES
+|If the merchant needs UMF to submit the payment information to customs.
+|TRUE  FALSE
+
+|invoice_id
+|YES
+|This receipt of sub_order.
+|Lengths from 1 to 20 characters.
+
+|mer_item_id
+|YES
+|The ID in merchant system.
+|Lengths from 1 to 32 characters.
+
+|type
+|YES
+|The type of goods.
+|ENUM
+
+|name
+|NO
+|The goods name.
+|Lengths from 1 to 256 characters.
+
+|description
+|NO
+|The description of goods.
+|Lengths from 1 to 64 characters.
+
+|mer_total
+|YES
+|The amount object. The price of goods.
+|Maximum length is 12 digits including 2 decimal places.
+
+|quantity
+|YES
+|Number. The quantity of goods.
+|Maximum length is 2
+
+|===
+
+[[微信直接支付]]
+[align="center"]
+.WX_CODE、WX_APP、WX_JSAPI
+|===
+
+|Parameter |Required |Type |Example |Description
+
+|attach
+|NO
+|String(128)
+| Additional  description
+|Allow vendors an additional field to be returned in the payment notification after submitting a payment to the Query Order API.
+
+|detail
+|NO
+|String(6000
+|{
+"goods_id":"iphone6s_32G",
+"wxpay_goods_id":"1002",
+"goods_name":"iPhone6s 32G",
+"quantity":1,"price":608800,
+"goods_category":"123789",
+"body":"iPhones"
+}
+|Detailed product list described in JSON format.
+
+|goods_tag
+|NO
+|String(32)
+|WXG
+|Specifies the label of goods, which is a parameter in the coupon feature for businesses.
+
+|product_id
+|NO
+|String(32)
+|1.22354E+22
+|This field is only required when trade_type is NATIVE. This ID contains the product ID as set by the Vendor.
+
+|===
+
+
+[[订单状态]]
+=== Order Status Form
+
+[align="center"]
+|===
+| 参数名 | 含义
+
+| *STARTED*
+| 支付开始（即支付中）
+
+| *SUCCEEDED*
+| 支付成功
+
+| *FAILED*
+| 支付失败
+|===
+
+[[退款状态]]
+=== Refund Status Form
+
+[align="center"]
+
+|===
+| 参数名 | 含义
+
+| *STARTED*
+| 退款开始
+
+| *SUCCEEDED*
+| 退款成功
+
+| *FAILED*
+| 退款失败
+|===
+
+=== Currency Type  Form
+[align="center"]
+
+|===
+| Parameter Name | Description
+
+|GBP
+|Great Britain pound
+
+|HKD
+|Hong Kong dollar
+
+|USD
+|United States dollar
+
+|JPY
+|Japanese yen
+
+|CAD
+|Canadian dollar
+
+|AUD
+|Australian dollar
+
+|EUR
+|Euro
+
+|NZD
+|New Zealand Dollar
+
+|KRW
+|South Korean won
+
+|THB
+|Thailand baht
+
+|===
+
+Notes: The currency type for payment and refund must be identical.
+
+
+
+
