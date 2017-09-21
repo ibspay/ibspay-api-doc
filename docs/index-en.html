@@ -531,7 +531,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#_checking_steps">1.4. Checking Steps</a></li>
 </ul>
 </li>
-<li><a href="#_public_api">2. PUBLIC API</a>
+<li><a href="#_open_api">2. OPEN API</a>
 <ul class="sectlevel2">
 <li><a href="#_payment_interface">2.1. Payment Interface</a>
 <ul class="sectlevel3">
@@ -548,14 +548,20 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#_request_parameters_2">2.2.2. Request Parameters</a></li>
 <li><a href="#_return_parameters">2.2.3. Return Parameters</a></li>
 <li><a href="#_asynchronous_notification_parameters_2">2.2.4. Asynchronous Notification Parameters</a></li>
-<li><a href="#_query_order">2.2.5. Query Order</a></li>
-<li><a href="#_request_method_3">2.2.6. Request Method</a></li>
-<li><a href="#_request_parameters_3">2.2.7. Request Parameters</a></li>
-<li><a href="#_return_parameters_2">2.2.8. Return Parameters</a></li>
-<li><a href="#_query_refund">2.2.9. Query Refund</a></li>
-<li><a href="#_request_method_4">2.2.10. Request Method</a></li>
-<li><a href="#_request_parameters_4">2.2.11. Request Parameters</a></li>
-<li><a href="#_return_data">2.2.12. Return Data</a></li>
+</ul>
+</li>
+<li><a href="#_query_order">2.3. Query Order</a>
+<ul class="sectlevel3">
+<li><a href="#_request_method_3">2.3.1. Request Method</a></li>
+<li><a href="#_request_parameters_3">2.3.2. Request Parameters</a></li>
+<li><a href="#_return_parameters_2">2.3.3. Return Parameters</a></li>
+</ul>
+</li>
+<li><a href="#_query_refund">2.4. Query Refund</a>
+<ul class="sectlevel3">
+<li><a href="#_request_method_4">2.4.1. Request Method</a></li>
+<li><a href="#_request_parameters_4">2.4.2. Request Parameters</a></li>
+<li><a href="#_return_data">2.4.3. Return Data</a></li>
 </ul>
 </li>
 </ul>
@@ -563,8 +569,8 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#_remark">3. Remark</a>
 <ul class="sectlevel2">
 <li><a href="#_channel_type">3.1. Channel Type</a></li>
-<li><a href="#交易凭证样例">3.2. Transaction Voucher Sample</a></li>
-<li><a href="#交易凭证详情">3.3. Transaction Voucher Details</a></li>
+<li><a href="#交易凭证样例">3.2. Transaction Credential Sample</a></li>
+<li><a href="#交易凭证详情">3.3. Transaction Credential Details</a></li>
 <li><a href="#_channel_extra_parameters">3.4. Channel Extra Parameters</a></li>
 <li><a href="#订单状态">3.5. Order Status Form</a></li>
 <li><a href="#退款状态">3.6. Refund Status Form</a></li>
@@ -601,7 +607,7 @@ Start writing</p>
 <p>Data Format: json</p>
 </li>
 <li>
-<p>The asynchronous notification interface return "success" when it was completed.</p>
+<p>The asynchronous notification interface must return "success" when it was completed.</p>
 </li>
 </ul>
 </div>
@@ -727,7 +733,7 @@ signature.update(contentBytes);
 </div>
 </div>
 <div class="sect1">
-<h2 id="_public_api"><a class="anchor" href="#_public_api"></a>2. PUBLIC API</h2>
+<h2 id="_open_api"><a class="anchor" href="#_open_api"></a>2. OPEN API</h2>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="_payment_interface"><a class="anchor" href="#_payment_interface"></a>2.1. Payment Interface</h3>
@@ -802,7 +808,7 @@ signature.update(contentBytes);
 <td class="tableblock halign-left valign-top"><p class="tableblock">channel</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">YES</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Enum</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CREDIT_CARD</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UMF_CREDIT_CARD</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Channel Type. For more information, see <a href="#_channel_type">Channel Type</a>.</p></td>
 </tr>
 <tr>
@@ -916,8 +922,8 @@ signature.update(contentBytes);
 <td class="tableblock halign-left valign-top"><p class="tableblock">credentials</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Map&lt;String,String&gt;</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">详见<a href="#交易凭证样例">Transaction Voucher Sample</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">交易凭证,渠道最终返回的连接或者最终请求参数,用于客户端发起交易，见<a href="#交易凭证详情">Transaction Voucher Details</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">详见<a href="#交易凭证样例">Transaction Credential Sample</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">交易凭证,渠道最终返回的连接或者最终请求参数,用于客户端发起交易，见<a href="#交易凭证详情">Transaction Credential Details</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">status</p></td>
@@ -1239,12 +1245,11 @@ signature.update(contentBytes);
 <p>和<a href="#退款同步参数">[退款同步参数]</a>相同</p>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_query_order"><a class="anchor" href="#_query_order"></a>2.2.5. Query Order</h4>
-
 </div>
+<div class="sect2">
+<h3 id="_query_order"><a class="anchor" href="#_query_order"></a>2.3. Query Order</h3>
 <div class="sect3">
-<h4 id="_request_method_3"><a class="anchor" href="#_request_method_3"></a>2.2.6. Request Method</h4>
+<h4 id="_request_method_3"><a class="anchor" href="#_request_method_3"></a>2.3.1. Request Method</h4>
 <div class="listingblock">
 <div class="content">
 <pre>GET /charges/{chargeNo}</pre>
@@ -1252,7 +1257,7 @@ signature.update(contentBytes);
 </div>
 </div>
 <div class="sect3">
-<h4 id="_request_parameters_3"><a class="anchor" href="#_request_parameters_3"></a>2.2.7. Request Parameters</h4>
+<h4 id="_request_parameters_3"><a class="anchor" href="#_request_parameters_3"></a>2.3.2. Request Parameters</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 20%;">
@@ -1282,17 +1287,16 @@ signature.update(contentBytes);
 </table>
 </div>
 <div class="sect3">
-<h4 id="_return_parameters_2"><a class="anchor" href="#_return_parameters_2"></a>2.2.8. Return Parameters</h4>
+<h4 id="_return_parameters_2"><a class="anchor" href="#_return_parameters_2"></a>2.3.3. Return Parameters</h4>
 <div class="paragraph">
 <p><span class="big">和<a href="#订单异步通知参数">[订单异步通知参数]</a>参数相同</span></p>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_query_refund"><a class="anchor" href="#_query_refund"></a>2.2.9. Query Refund</h4>
-
 </div>
+<div class="sect2">
+<h3 id="_query_refund"><a class="anchor" href="#_query_refund"></a>2.4. Query Refund</h3>
 <div class="sect3">
-<h4 id="_request_method_4"><a class="anchor" href="#_request_method_4"></a>2.2.10. Request Method</h4>
+<h4 id="_request_method_4"><a class="anchor" href="#_request_method_4"></a>2.4.1. Request Method</h4>
 <div class="listingblock">
 <div class="content">
 <pre>GET /refunds/{refundNo}</pre>
@@ -1300,7 +1304,7 @@ signature.update(contentBytes);
 </div>
 </div>
 <div class="sect3">
-<h4 id="_request_parameters_4"><a class="anchor" href="#_request_parameters_4"></a>2.2.11. Request Parameters</h4>
+<h4 id="_request_parameters_4"><a class="anchor" href="#_request_parameters_4"></a>2.4.2. Request Parameters</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 20%;">
@@ -1330,7 +1334,7 @@ signature.update(contentBytes);
 </table>
 </div>
 <div class="sect3">
-<h4 id="_return_data"><a class="anchor" href="#_return_data"></a>2.2.12. Return Data</h4>
+<h4 id="_return_data"><a class="anchor" href="#_return_data"></a>2.4.3. Return Data</h4>
 <div class="paragraph">
 <p>返回参数和<a href="#退款同步参数">[退款同步参数]</a>相同</p>
 </div>
@@ -1395,7 +1399,7 @@ signature.update(contentBytes);
 </table>
 </div>
 <div class="sect2">
-<h3 id="交易凭证样例"><a class="anchor" href="#交易凭证样例"></a>3.2. Transaction Voucher Sample</h3>
+<h3 id="交易凭证样例"><a class="anchor" href="#交易凭证样例"></a>3.2. Transaction Credential Sample</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="json"><span class="key"><span class="delimiter">&quot;</span><span class="content">url</span><span class="delimiter">&quot;</span></span>:<span class="string"><span class="delimiter">&quot;</span><span class="content">&lt;form name=</span><span class="char">\&quot;</span><span class="content">punchout_form</span><span class="char">\&quot;</span><span class="content">method=</span><span class="char">\&quot;</span><span class="content">post</span><span class="char">\&quot;</span><span class="content"> action=</span><span class="char">\&quot;</span><span class="content">https://pay.yizhifubj.com/prs/user_payment.checkit?v_md5info=b00a57dc732366cbfed3da03fe064af5&amp;v_orderstatus=1&amp;v_rcvname=9466&amp;v_moneytype=0&amp;v_oid=20161222-9466-585b77b5ab5c986f049a0faa&amp;v_ymd=20161222&amp;v_url=http%3A%2F%2F127.0.0.1%3A9000%2Forder%2Fcharge%2Freturn&amp;v_rcvaddr=9466&amp;v_ordername=9466&amp;v_rcvtel=9466&amp;v_mid=9466&amp;v_amount=0.01&amp;v_rcvpost=9466</span><span class="char">\&quot;</span><span class="content">&gt;</span><span class="char">\n</span><span class="content">&lt;input type=</span><span class="char">\&quot;</span><span class="content">submit</span><span class="char">\&quot;</span><span class="content"> value=</span><span class="char">\&quot;</span><span class="content">[0xe7][0xab][0x8b][0xe5][0x8d][0xb3][0xe6][0x94][0xaf][0xe4][0xbb][0x98]</span><span class="char">\&quot;</span><span class="content"> style=</span><span class="char">\&quot;</span><span class="content">display:none</span><span class="char">\&quot;</span><span class="content"> &gt;</span><span class="char">\n</span><span class="content">&lt;/form&gt;</span><span class="char">\n</span><span class="content">&lt;script&gt;document.forms[0].submit();&lt;/script&gt;</span><span class="delimiter">&quot;</span></span></code></pre>
@@ -1403,7 +1407,7 @@ signature.update(contentBytes);
 </div>
 </div>
 <div class="sect2">
-<h3 id="交易凭证详情"><a class="anchor" href="#交易凭证详情"></a>3.3. Transaction Voucher Details</h3>
+<h3 id="交易凭证详情"><a class="anchor" href="#交易凭证详情"></a>3.3. Transaction Credential Details</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1668,25 +1672,19 @@ servletResponse.getWriter().write(charge.getCredentials().get(<span class="strin
 <td class="tableblock halign-left valign-top"><p class="tableblock">phone</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">YES</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The phone number registered in the bank card issuer.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Must be encrypted</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">card_holder</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">YES</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The name of card holder.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Must be encrypted</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">citizen_id_type</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">YES</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The type of citizen id.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ENUM</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">citizen_id_number</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">YES</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Citizen id number.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Must be encrypted</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">bank_code</p></td>
@@ -1698,19 +1696,19 @@ servletResponse.getWriter().write(charge.getCredentials().get(<span class="strin
 <td class="tableblock halign-left valign-top"><p class="tableblock">number</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">YES</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The card number.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Must be encrypted</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">valid_date</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">YES</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The valid date of bank card.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Must be encrypted</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">cvv2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">YES</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">CVV2 of bank card.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Must be encrypted</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
 </tr>
 </tbody>
 </table>
@@ -1771,25 +1769,19 @@ servletResponse.getWriter().write(charge.getCredentials().get(<span class="strin
 <td class="tableblock halign-left valign-top"><p class="tableblock">phone</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">YES</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The phone number registered in the bank card issuer.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Must be encrypted</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">card_holder</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">YES</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The name of card holder.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Must be encrypted</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">citizen_id_type</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">YES</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The type of citizen id.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ENUM</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">citizen_id_number</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">YES</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Citizen id number.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Must be encrypted</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">bank_code</p></td>
@@ -1801,7 +1793,7 @@ servletResponse.getWriter().write(charge.getCredentials().get(<span class="strin
 <td class="tableblock halign-left valign-top"><p class="tableblock">number</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">YES</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The card number.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Must be encrypted</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
 </tr>
 </tbody>
 </table>
@@ -1868,19 +1860,13 @@ servletResponse.getWriter().write(charge.getCredentials().get(<span class="strin
 <td class="tableblock halign-left valign-top"><p class="tableblock">name</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">YES</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The name of payer.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Must be encrypted</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">citizen_id_type</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">YES</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The type of citizen id.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ENUM</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">citizen_id_number</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">YES</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Citizen id number.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Must be encrypted</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">open_id</p></td>
@@ -1953,19 +1939,13 @@ servletResponse.getWriter().write(charge.getCredentials().get(<span class="strin
 <td class="tableblock halign-left valign-top"><p class="tableblock">name</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">YES</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The name of payer.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Must be encrypted</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">citizen_id_type</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">YES</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The type of citizen id.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ENUM</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">citizen_id_number</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">YES</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Citizen id number.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Must be encrypted</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
 </tr>
 </tbody>
 </table>
@@ -2233,7 +2213,7 @@ servletResponse.getWriter().write(charge.getCredentials().get(<span class="strin
 <div id="footer">
 <div id="footer-text">
 Version 0.0<br>
-Last updated 2017-09-08 15:51:40 CST
+Last updated 2017-09-21 10:49:33 +08:00
 </div>
 </div>
 </body>

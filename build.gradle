@@ -11,13 +11,13 @@ buildscript {
 apply plugin: 'org.asciidoctor.convert'
 
 asciidoctor {
-    sourceDir = file('asciidoc')
+    sourceDir = file('/src/main/asciidoc')
     outputs.upToDateWhen { false }
 
     doLast {
         copy {
             from "build/asciidoc/html5"
-            into "$projectDir"
+            into "docs"
         }
     }
 }
