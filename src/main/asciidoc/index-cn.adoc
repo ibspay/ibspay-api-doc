@@ -635,6 +635,7 @@ servletResponse.getWriter().write(charge.getCredentials().get("html"));
 [cols=".^4,.^2,.^4,.^4"]
 .sub_order
 |===
+|变量名|必填|描述 |约束
 
 |mer_sub_reference_id
 |是
