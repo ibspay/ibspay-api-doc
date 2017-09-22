@@ -1,5 +1,4 @@
 = API Document for IBS Payment Gateway
-paid
 v0.0, 2017-09-05
 :doctype: article
 :description: IBS Payment Gateway API
@@ -26,7 +25,7 @@ IBS Payment Gateway文档说明
 === 版本说明
 
 * 2017-09-05 +
-开始编写
+Version 1.0.0
 
 
 === 全局规划
@@ -135,7 +134,7 @@ POST /charges
 ----
 ==== 请求参数
 
-[align="center"]
+[cols=".^4,.^2,.^4,.^4,.^4"]
 |===
 | 变量名 | 必填 | 类型 | 示例值 | 描述
 
@@ -197,368 +196,51 @@ POST /charges
 
 ==== 同步返回参数
 
-[align="center"]
-|===
-|变量名 | 必填 | 类型 | 示例值 | 描述
-
-| appId
-| 是
-| String(24)
-| 583128ffef190c52ccec68a8
-| 发起支付的应用id
-
-
-| chargeNo
-| 是
-| String(32)
-| 20150806125346
-| 商户系统内部订单号
-
-
-| subject
-| 是
-| String(32)
-| iPhone7-32G
-| 商品名称
-
-
-| remark
-| 否
-| String(128)
-| 订单备注：1.XXXXXXXXX,2.XXXXXXXXX
-| 订单备注
-
-
-| channel
-| 是
-| String(20)
-| ALIPAY_WEB
-| 具体渠道类型详见 <<渠道类型>>
-
-
-| amount
-| 是
-| Int
-| 888
-| 订单总金额，单位为分
-
-
-| refundedAmount
-| 是
-| Int
-| 100
-| 已退款总额，单位为分
-
-
-| metadata
-| 否
-| String(512)
-|
-| 元数据，用于携带自定义数据,原样返回,如类似json数据也必须转换为字符串格式
-
-
-| credentials
-| 是
-| Map<String,String>
-| 详见<<交易凭证样例>>
-| 交易凭证,渠道最终返回的连接或者最终请求参数,用于客户端发起交易，见<<交易凭证详情>>
-
-| status
-| 是
-| String
-| SUCCEEDED
-| 具体详见<<订单状态>>
-
-| errorMessage
-| 否
-| String(128)
-| 退款总额超出订单金额
-| 发生错误时的错误描述参数
-
-| startedAt
-| 否
-| Date
-| 1482389429010
-| 从1970年1月1日00：00至今的毫秒时间
-
-
-| completedAt
-| 否
-| Date
-| 1482389429010
-| 从1970年1月1日00：00至今的毫秒时间。成功或失败时有值
-|===
+以后完善。
 
 ==== 异步通知参数
-[[订单异步通知参数]]
-
-[align="center"]
-|===
-| 变量名 | 必填 | 类型 | 示例值 | 描述
-
-
-| appId
-| 是
-| String(24)
-| 583128ffef190c52ccec68a8
-| 订单的发起appId
-
-
-| chargeNo
-| 是
-| String(32)
-| 20150806125346
-| 商户收款单号
-
-
-| subject
-| 是
-| String(32)
-| iPhone7-32G
-| 商品名称
-
-
-| remark
-| 否
-| String(1000)
-| 退单备注：1.XXXXXXXXX,2.XXXXXXXXX
-| 退单备注
-
-
-| channel
-| 是
-| String(20)
-| ALIPAY_WEB
-| 具体渠道类型详见 <<渠道类型>>
-
-
-| amount
-| 是
-| Int
-| 100
-| 订单总金额，单位为分
-
-
-| refundedAmount
-| 是
-| Int
-| 100
-| 已退款总额，单位为分
-
-
-| metadata
-| 否
-| String(512)
-| ...
-| 元数据，用于携带自定义数据,原样返回,如类似json数据也必须转换为字符串格式
-
-| status
-| 是
-| String
-| SUCCEEDED
-| 具体详见<<订单状态>>
-
-| errorMessage
-| 否
-| String(128)
-| 退款总额超出订单金额
-| 发生错误时的错误描述参数
-
-
-| startedAt
-| 否
-| Date
-| 1482389429010
-| 退款申请成功的时间，从1970年1月1日00：00至今的毫秒时间
-
-| completedAt
-| 否
-| Date
-| 1482389429010
-| 从1970年1月1日00：00至今的毫秒时间。成功或失败时有值
-|===
+以后完善。
 
 === 退款接口
 
-==== 请求方式
-----
-POST /refunds
-----
+以后完善。
+
 ==== 请求参数
 
-[align="center"]
-|===
-| 变量名 | 必填 | 类型 | 示例值 | 描述
-
-| chargeNo
-| 是
-| String(32)
-| 20150806125346
-| 商户收款单号
-
-
-| refundNo
-| 是
-| String(32)
-| 1217752501201407033233368018
-| 商户系统内部的退款单号，商户系统内部唯一，同一退款单号多次请求只退一笔
-
-| amount
-| 是
-| Int
-| 100
-| 退款总金额，订单总金额，单位为分，只能为整数
-
-| remark
-| 否
-| String(128)
-| 退单备注：1.XXXXXXXXX,2.XXXXXXXXX
-| 退单备注
-
-| metadata
-| 否
-| String(512)
-| ...
-| 元数据，用于携带自定义数据,原样返回,如类似json数据也必须转换为字符串格式
-
-| notifyUrl
-| 是
-| String(100)
-| \https://api.payingcloud.cn/callback
-| 支付成功后返回支付结果地址，必须为公网地址，如不填将发送到在控制台配置的Webhooks地址，如也没配置Webhooks地址的话将不发送通知
-|===
+以后完善。
 
 ==== 返回结果
-[[退款同步参数]]
-
-[align="center"]
-|===
-| 变量名 | 必填 | 类型 | 示例值 | 描述
-
-| appId
-| 是
-| String(24)
-| 583128ffef190c52ccec68a8
-| 退款单的发起app
-
-| refundNo
-| 是
-| String(32)
-| 1217752501201407033233368018
-| 商户系统内部的退款单号，商户系统内部唯一，同一退款单号多次请求只退一笔
-
-| chargeNo
-| 是
-| String(32)
-| 20150806125346
-| 商户收款单号
-
-| channel
-| 是
-| String(20)
-| ALIPAY_WEB
-| 收款渠道类型详见 <<渠道类型>>
-
-
-| amount
-| 是
-| Int
-| 100
-| 退款总金额，订单总金额，单位为分，只能为整数
-
-| remark
-| 否
-| String(128)
-| 退单备注：1.XXXXXXXXX,2.XXXXXXXXX
-| 退单备注
-
-| metadata
-| 否
-| String(512)
-| ...
-| 元数据，用于携带自定义数据,原样返回,如类似json数据也必须转换为字符串格式
-
-
-| status
-| 是
-| String
-| SUCCEEDED
-| 具体详见<<订单状态>>
-
-
-| errorMessage
-| 否
-| String(128)
-| 退款总额超出订单金额
-| 发生错误时的错误描述参数
-
-| startedAt
-| 否
-| Date
-| 1482389429010
-| 退款申请成功的时间，从1970年1月1日00：00至今的毫秒时间
-
-
-| completedAt
-| 否
-| Date
-| 1482389429010
-| 完成时间，从1970年1月1日00：00至今的毫秒时间。成功或失败时有值
-|===
+以后完善。
 
 ==== 异步通知参数
 
-和<<退款同步参数>>相同
+以后完善。
 
 === 订单查询
 
-==== 请求方式
-----
-GET /charges/{chargeNo}
-----
+以后完善。
+
 ==== 请求参数
 
-[align="center"]
-|===
-| 变量名 | 必填 | 类型 | 示例值 | 描述
-
-| chargeNo
-| 是
-| String(32)
-| 20150806125346
-| 商户订单号，是在请求连接最后的部分添加的参数，是url参数
-|===
+以后完善。
 
 ==== 返回参数
 
-[big]#和<<订单异步通知参数>>参数相同#
+以后完善。
 
 === 退款单查询
 
-==== 请求方式
-----
-GET /refunds/{refundNo}
-----
+以后完善。
+
 ==== 请求参数
 
-[align="center"]
-|===
-| 变量名 | 必填 | 类型 | 示例值 | 描述
-
-| refundNo
-| 是
-| String(32)
-| 20150806125346
-| 商户退款号，是在请求连接最后的部分添加的参数，是url参数
-|===
+以后完善。
 
 ==== 返回参数
 
-返回参数和<<退款同步参数>>相同
+以后完善。
 
 == 备注
-
-[[渠道类型]]
 
 === 渠道类型表
 [[渠道类型]]
@@ -684,7 +366,7 @@ servletResponse.getWriter().write(charge.getCredentials().get("html"));
 
 [[UMF_CREDIT_CARD]]
 .UMF_CREDIT_CARD
-[align="center"]
+[cols=".^3,.^2,.^6,.^4"]
 |===
 |变量名|必填|描述 |约束
 
@@ -761,7 +443,7 @@ servletResponse.getWriter().write(charge.getCredentials().get("html"));
 |===
 
 [[UMF_DEBIT_CARD]]
-[align="center"]
+[cols=".^3,.^2,.^6,.^4"]
 .UMF_DEBIT_CARD
 |===
 |变量名|必填|描述 |约束
@@ -829,7 +511,7 @@ servletResponse.getWriter().write(charge.getCredentials().get("html"));
 |===
 
 [[UMF_WECHAT__WEB]]
-[align="center"]
+[cols=".^3,.^2,.^6,.^4"]
 .UMF_WECHAT_WEB
 |===
 |变量名|必填|描述 |约束
@@ -892,7 +574,7 @@ servletResponse.getWriter().write(charge.getCredentials().get("html"));
 |===
 
 [[三种方式的参数]]
-[align="center"]
+[cols=".^3,.^2,.^6,.^4"]
 .UMF_WECHAT_SCAN 、UMF_ALIPAY_SCAN、UMF_WECHAT_IN_APP
 |===
 |变量名|必填|描述 |约束
@@ -950,10 +632,9 @@ servletResponse.getWriter().write(charge.getCredentials().get("html"));
 |===
 
 [[sub_order]]
-[align="center"]
+[cols=".^4,.^2,.^4,.^4"]
 .sub_order
 |===
-|变量名 |必填|描述 |约束
 
 |mer_sub_reference_id
 |是
@@ -1013,7 +694,7 @@ servletResponse.getWriter().write(charge.getCredentials().get("html"));
 |===
 
 [[微信直接支付]]
-[align="center"]
+[cols=".^4,.^2,.^4,.^4,.^4"]
 .WX_CODE、WX_APP、WX_JSAPI
 |===
 |变量名|必填|类型|示例值|描述
@@ -1050,42 +731,6 @@ servletResponse.getWriter().write(charge.getCredentials().get("html"));
 |trade_type=NATIVE，此参数必传。
 此id为二维码中包含的商品ID，商户自行定义。
 
-|===
-
-
-[[订单状态]]
-=== 订单状态表
-
-[align="center"]
-|===
-| 参数名 | 含义
-
-| *STARTED*
-| 支付开始（即支付中）
-
-| *SUCCEEDED*
-| 支付成功
-
-| *FAILED*
-| 支付失败
-|===
-
-[[退款状态]]
-=== 退款状态表
-
-[align="center"]
-
-|===
-| 参数名 | 含义
-
-| *STARTED*
-| 退款开始
-
-| *SUCCEEDED*
-| 退款成功
-
-| *FAILED*
-| 退款失败
 |===
 
 [[标价币种]]

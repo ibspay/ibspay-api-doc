@@ -7,7 +7,7 @@
 <meta name="generator" content="Asciidoctor 1.5.3">
 <meta name="description" content="IBS Payment Gateway API">
 <meta name="keywords" content="IBS Payment Gateway,API">
-<meta name="author" content="paid">
+<meta name="author" content="v0.0, 2017-09-05">
 <title>API Document for IBS Payment Gateway</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
@@ -516,9 +516,7 @@ table.CodeRay td.code>pre{padding:0}
 <div id="header">
 <h1>API Document for IBS Payment Gateway</h1>
 <div class="details">
-<span id="author" class="author">paid</span><br>
-<span id="revnumber">version 0.0,</span>
-<span id="revdate">2017-09-05</span>
+<span id="author" class="author">v0.0, 2017-09-05</span><br>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">目录</div>
@@ -544,37 +542,32 @@ table.CodeRay td.code>pre{padding:0}
 </li>
 <li><a href="#_退款接口">2.2. 退款接口</a>
 <ul class="sectlevel3">
-<li><a href="#_请求方式_2">2.2.1. 请求方式</a></li>
-<li><a href="#_请求参数_2">2.2.2. 请求参数</a></li>
-<li><a href="#_返回结果">2.2.3. 返回结果</a></li>
-<li><a href="#_异步通知参数_2">2.2.4. 异步通知参数</a></li>
+<li><a href="#_请求参数_2">2.2.1. 请求参数</a></li>
+<li><a href="#_返回结果">2.2.2. 返回结果</a></li>
+<li><a href="#_异步通知参数_2">2.2.3. 异步通知参数</a></li>
 </ul>
 </li>
 <li><a href="#_订单查询">2.3. 订单查询</a>
 <ul class="sectlevel3">
-<li><a href="#_请求方式_3">2.3.1. 请求方式</a></li>
-<li><a href="#_请求参数_3">2.3.2. 请求参数</a></li>
-<li><a href="#_返回参数">2.3.3. 返回参数</a></li>
+<li><a href="#_请求参数_3">2.3.1. 请求参数</a></li>
+<li><a href="#_返回参数">2.3.2. 返回参数</a></li>
 </ul>
 </li>
 <li><a href="#_退款单查询">2.4. 退款单查询</a>
 <ul class="sectlevel3">
-<li><a href="#_请求方式_4">2.4.1. 请求方式</a></li>
-<li><a href="#_请求参数_4">2.4.2. 请求参数</a></li>
-<li><a href="#_返回参数_2">2.4.3. 返回参数</a></li>
+<li><a href="#_请求参数_4">2.4.1. 请求参数</a></li>
+<li><a href="#_返回参数_2">2.4.2. 返回参数</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><a href="#_备注">3. 备注</a>
 <ul class="sectlevel2">
-<li><a href="#渠道类型">3.1. 渠道类型表</a></li>
+<li><a href="#_渠道类型表">3.1. 渠道类型表</a></li>
 <li><a href="#交易凭证样例">3.2. 交易凭证样例</a></li>
 <li><a href="#交易凭证详情">3.3. 交易凭证详情</a></li>
 <li><a href="#渠道额外参数">3.4. 渠道额外参数</a></li>
-<li><a href="#订单状态">3.5. 订单状态表</a></li>
-<li><a href="#退款状态">3.6. 退款状态表</a></li>
-<li><a href="#标价币种">3.7. 货币类型表<br></a></li>
+<li><a href="#标价币种">3.5. 货币类型表<br></a></li>
 </ul>
 </li>
 </ul>
@@ -591,7 +584,7 @@ IBS Payment Gateway文档说明
 <ul>
 <li>
 <p>2017-09-05<br>
-开始编写</p>
+Version 1.0.0</p>
 </li>
 </ul>
 </div>
@@ -761,583 +754,158 @@ signature.update(contentBytes);
 <h4 id="_请求参数"><a class="anchor" href="#_请求参数"></a>2.1.3. 请求参数</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
+<col style="width: 22%;">
+<col style="width: 11%;">
+<col style="width: 22%;">
+<col style="width: 22%;">
+<col style="width: 22%;">
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">变量名</th>
-<th class="tableblock halign-left valign-top">必填</th>
-<th class="tableblock halign-left valign-top">类型</th>
-<th class="tableblock halign-left valign-top">示例值</th>
-<th class="tableblock halign-left valign-top">描述</th>
+<th class="tableblock halign-left valign-middle">变量名</th>
+<th class="tableblock halign-left valign-middle">必填</th>
+<th class="tableblock halign-left valign-middle">类型</th>
+<th class="tableblock halign-left valign-middle">示例值</th>
+<th class="tableblock halign-left valign-middle">描述</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">mer_order_no</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">String(32)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">20150806125346</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">商户系统内部订单号，要求8到32个字符、且在同一个应用下唯一，只能包含字母和数字</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">mer_order_no</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">是</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">String(32)</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">20150806125346</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">商户系统内部订单号，要求8到32个字符、且在同一个应用下唯一，只能包含字母和数字</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">subject</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">String(128)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">iPhone7-32G</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">商品详情</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">subject</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">是</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">String(128)</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">iPhone7-32G</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">商品详情</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">total</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Int</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">888</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">订单总金额，单位为分，不能小于1</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">total</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">是</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Int</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">888</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">订单总金额，单位为分，不能小于1</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">currency</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">String(16)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">GBP</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">币种代码，符合ISO4217标准详见<a href="#标价币种">货币类型表<br></a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">currency</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">是</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">String(16)</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">GBP</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">币种代码，符合ISO4217标准详见<a href="#标价币种">货币类型表<br></a></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">channel</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Enum</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CREDIT_CARD</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">渠道类型，具体枚举值详见<a href="#渠道类型">渠道类型表</a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">channel</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">是</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Enum</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">CREDIT_CARD</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">渠道类型，具体枚举值详见<a href="#渠道类型">[渠道类型]</a></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">external_customer_id</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">否</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">oUpF8uMuAJO_M2pxb1Q9zNjWeS6o</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">用户在商户的唯一标识</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">external_customer_id</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">否</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">oUpF8uMuAJO_M2pxb1Q9zNjWeS6o</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">用户在商户的唯一标识</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user_ip</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">String(16)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">123.12.12.123</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">终端IP，APP和网页支付提交用户端ip。</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">user_ip</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">是</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">String(16)</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">123.12.12.123</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">终端IP，APP和网页支付提交用户端ip。</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">extra</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Map&lt;String, Object&gt;</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">{"returnUrl": "https://api.payingcloud.cn/returnUrl"}</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">渠道额外参数，用键值对的map存储不同渠道之间的<a href="#渠道额外参数">渠道额外参数</a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">extra</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">是</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Map&lt;String, Object&gt;</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">{"returnUrl": "https://api.payingcloud.cn/returnUrl"}</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">渠道额外参数，用键值对的map存储不同渠道之间的<a href="#渠道额外参数">渠道额外参数</a></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">notifyUrl</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">String(100)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">https://api.payingcloud.cn/callback</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">异步通知地址，支付成功后返回支付结果地址。</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">notifyUrl</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">是</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">String(100)</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">https://api.payingcloud.cn/callback</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">异步通知地址，支付成功后返回支付结果地址。</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect3">
 <h4 id="_同步返回参数"><a class="anchor" href="#_同步返回参数"></a>2.1.4. 同步返回参数</h4>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">变量名</th>
-<th class="tableblock halign-left valign-top">必填</th>
-<th class="tableblock halign-left valign-top">类型</th>
-<th class="tableblock halign-left valign-top">示例值</th>
-<th class="tableblock halign-left valign-top">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">appId</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">String(24)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">583128ffef190c52ccec68a8</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">发起支付的应用id</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">chargeNo</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">String(32)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">20150806125346</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">商户系统内部订单号</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">subject</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">String(32)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">iPhone7-32G</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">商品名称</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">remark</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">否</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">String(128)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">订单备注：1.XXXXXXXXX,2.XXXXXXXXX</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">订单备注</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">channel</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">String(20)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ALIPAY_WEB</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">具体渠道类型详见 <a href="#渠道类型">渠道类型表</a></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">amount</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Int</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">888</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">订单总金额，单位为分</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">refundedAmount</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Int</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">100</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">已退款总额，单位为分</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">metadata</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">否</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">String(512)</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">元数据，用于携带自定义数据,原样返回,如类似json数据也必须转换为字符串格式</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">credentials</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Map&lt;String,String&gt;</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">详见<a href="#交易凭证样例">交易凭证样例</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">交易凭证,渠道最终返回的连接或者最终请求参数,用于客户端发起交易，见<a href="#交易凭证详情">交易凭证详情</a></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">status</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">SUCCEEDED</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">具体详见<a href="#订单状态">订单状态表</a></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">errorMessage</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">否</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">String(128)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">退款总额超出订单金额</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">发生错误时的错误描述参数</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">startedAt</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">否</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Date</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1482389429010</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">从1970年1月1日00：00至今的毫秒时间</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">completedAt</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">否</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Date</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1482389429010</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">从1970年1月1日00：00至今的毫秒时间。成功或失败时有值</p></td>
-</tr>
-</tbody>
-</table>
+<div class="paragraph">
+<p>以后完善。</p>
+</div>
 </div>
 <div class="sect3">
 <h4 id="_异步通知参数"><a class="anchor" href="#_异步通知参数"></a>2.1.5. 异步通知参数</h4>
-<table id="订单异步通知参数" class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">变量名</th>
-<th class="tableblock halign-left valign-top">必填</th>
-<th class="tableblock halign-left valign-top">类型</th>
-<th class="tableblock halign-left valign-top">示例值</th>
-<th class="tableblock halign-left valign-top">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">appId</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">String(24)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">583128ffef190c52ccec68a8</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">订单的发起appId</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">chargeNo</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">String(32)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">20150806125346</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">商户收款单号</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">subject</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">String(32)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">iPhone7-32G</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">商品名称</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">remark</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">否</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">String(1000)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">退单备注：1.XXXXXXXXX,2.XXXXXXXXX</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">退单备注</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">channel</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">String(20)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ALIPAY_WEB</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">具体渠道类型详见 <a href="#渠道类型">渠道类型表</a></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">amount</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Int</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">100</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">订单总金额，单位为分</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">refundedAmount</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Int</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">100</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">已退款总额，单位为分</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">metadata</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">否</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">String(512)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&#8230;&#8203;</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">元数据，用于携带自定义数据,原样返回,如类似json数据也必须转换为字符串格式</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">status</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">SUCCEEDED</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">具体详见<a href="#订单状态">订单状态表</a></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">errorMessage</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">否</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">String(128)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">退款总额超出订单金额</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">发生错误时的错误描述参数</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">startedAt</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">否</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Date</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1482389429010</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">退款申请成功的时间，从1970年1月1日00：00至今的毫秒时间</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">completedAt</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">否</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Date</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1482389429010</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">从1970年1月1日00：00至今的毫秒时间。成功或失败时有值</p></td>
-</tr>
-</tbody>
-</table>
+<div class="paragraph">
+<p>以后完善。</p>
+</div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_退款接口"><a class="anchor" href="#_退款接口"></a>2.2. 退款接口</h3>
-<div class="sect3">
-<h4 id="_请求方式_2"><a class="anchor" href="#_请求方式_2"></a>2.2.1. 请求方式</h4>
-<div class="listingblock">
-<div class="content">
-<pre>POST /refunds</pre>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_请求参数_2"><a class="anchor" href="#_请求参数_2"></a>2.2.2. 请求参数</h4>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">变量名</th>
-<th class="tableblock halign-left valign-top">必填</th>
-<th class="tableblock halign-left valign-top">类型</th>
-<th class="tableblock halign-left valign-top">示例值</th>
-<th class="tableblock halign-left valign-top">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">chargeNo</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">String(32)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">20150806125346</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">商户收款单号</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">refundNo</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">String(32)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1217752501201407033233368018</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">商户系统内部的退款单号，商户系统内部唯一，同一退款单号多次请求只退一笔</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">amount</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Int</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">100</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">退款总金额，订单总金额，单位为分，只能为整数</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">remark</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">否</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">String(128)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">退单备注：1.XXXXXXXXX,2.XXXXXXXXX</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">退单备注</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">metadata</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">否</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">String(512)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&#8230;&#8203;</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">元数据，用于携带自定义数据,原样返回,如类似json数据也必须转换为字符串格式</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">notifyUrl</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">String(100)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">https://api.payingcloud.cn/callback</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">支付成功后返回支付结果地址，必须为公网地址，如不填将发送到在控制台配置的Webhooks地址，如也没配置Webhooks地址的话将不发送通知</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect3">
-<h4 id="_返回结果"><a class="anchor" href="#_返回结果"></a>2.2.3. 返回结果</h4>
-<table id="退款同步参数" class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">变量名</th>
-<th class="tableblock halign-left valign-top">必填</th>
-<th class="tableblock halign-left valign-top">类型</th>
-<th class="tableblock halign-left valign-top">示例值</th>
-<th class="tableblock halign-left valign-top">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">appId</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">String(24)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">583128ffef190c52ccec68a8</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">退款单的发起app</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">refundNo</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">String(32)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1217752501201407033233368018</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">商户系统内部的退款单号，商户系统内部唯一，同一退款单号多次请求只退一笔</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">chargeNo</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">String(32)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">20150806125346</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">商户收款单号</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">channel</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">String(20)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ALIPAY_WEB</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">收款渠道类型详见 <a href="#渠道类型">渠道类型表</a></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">amount</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Int</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">100</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">退款总金额，订单总金额，单位为分，只能为整数</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">remark</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">否</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">String(128)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">退单备注：1.XXXXXXXXX,2.XXXXXXXXX</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">退单备注</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">metadata</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">否</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">String(512)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&#8230;&#8203;</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">元数据，用于携带自定义数据,原样返回,如类似json数据也必须转换为字符串格式</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">status</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">SUCCEEDED</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">具体详见<a href="#订单状态">订单状态表</a></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">errorMessage</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">否</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">String(128)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">退款总额超出订单金额</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">发生错误时的错误描述参数</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">startedAt</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">否</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Date</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1482389429010</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">退款申请成功的时间，从1970年1月1日00：00至今的毫秒时间</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">completedAt</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">否</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Date</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1482389429010</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">完成时间，从1970年1月1日00：00至今的毫秒时间。成功或失败时有值</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect3">
-<h4 id="_异步通知参数_2"><a class="anchor" href="#_异步通知参数_2"></a>2.2.4. 异步通知参数</h4>
 <div class="paragraph">
-<p>和<a href="#退款同步参数">[退款同步参数]</a>相同</p>
+<p>以后完善。</p>
+</div>
+<div class="sect3">
+<h4 id="_请求参数_2"><a class="anchor" href="#_请求参数_2"></a>2.2.1. 请求参数</h4>
+<div class="paragraph">
+<p>以后完善。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_返回结果"><a class="anchor" href="#_返回结果"></a>2.2.2. 返回结果</h4>
+<div class="paragraph">
+<p>以后完善。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_异步通知参数_2"><a class="anchor" href="#_异步通知参数_2"></a>2.2.3. 异步通知参数</h4>
+<div class="paragraph">
+<p>以后完善。</p>
 </div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_订单查询"><a class="anchor" href="#_订单查询"></a>2.3. 订单查询</h3>
-<div class="sect3">
-<h4 id="_请求方式_3"><a class="anchor" href="#_请求方式_3"></a>2.3.1. 请求方式</h4>
-<div class="listingblock">
-<div class="content">
-<pre>GET /charges/{chargeNo}</pre>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_请求参数_3"><a class="anchor" href="#_请求参数_3"></a>2.3.2. 请求参数</h4>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">变量名</th>
-<th class="tableblock halign-left valign-top">必填</th>
-<th class="tableblock halign-left valign-top">类型</th>
-<th class="tableblock halign-left valign-top">示例值</th>
-<th class="tableblock halign-left valign-top">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">chargeNo</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">String(32)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">20150806125346</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">商户订单号，是在请求连接最后的部分添加的参数，是url参数</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect3">
-<h4 id="_返回参数"><a class="anchor" href="#_返回参数"></a>2.3.3. 返回参数</h4>
 <div class="paragraph">
-<p><span class="big">和<a href="#订单异步通知参数">[订单异步通知参数]</a>参数相同</span></p>
+<p>以后完善。</p>
+</div>
+<div class="sect3">
+<h4 id="_请求参数_3"><a class="anchor" href="#_请求参数_3"></a>2.3.1. 请求参数</h4>
+<div class="paragraph">
+<p>以后完善。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_返回参数"><a class="anchor" href="#_返回参数"></a>2.3.2. 返回参数</h4>
+<div class="paragraph">
+<p>以后完善。</p>
 </div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_退款单查询"><a class="anchor" href="#_退款单查询"></a>2.4. 退款单查询</h3>
-<div class="sect3">
-<h4 id="_请求方式_4"><a class="anchor" href="#_请求方式_4"></a>2.4.1. 请求方式</h4>
-<div class="listingblock">
-<div class="content">
-<pre>GET /refunds/{refundNo}</pre>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_请求参数_4"><a class="anchor" href="#_请求参数_4"></a>2.4.2. 请求参数</h4>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">变量名</th>
-<th class="tableblock halign-left valign-top">必填</th>
-<th class="tableblock halign-left valign-top">类型</th>
-<th class="tableblock halign-left valign-top">示例值</th>
-<th class="tableblock halign-left valign-top">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">refundNo</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">String(32)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">20150806125346</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">商户退款号，是在请求连接最后的部分添加的参数，是url参数</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect3">
-<h4 id="_返回参数_2"><a class="anchor" href="#_返回参数_2"></a>2.4.3. 返回参数</h4>
 <div class="paragraph">
-<p>返回参数和<a href="#退款同步参数">[退款同步参数]</a>相同</p>
+<p>以后完善。</p>
+</div>
+<div class="sect3">
+<h4 id="_请求参数_4"><a class="anchor" href="#_请求参数_4"></a>2.4.1. 请求参数</h4>
+<div class="paragraph">
+<p>以后完善。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_返回参数_2"><a class="anchor" href="#_返回参数_2"></a>2.4.2. 返回参数</h4>
+<div class="paragraph">
+<p>以后完善。</p>
 </div>
 </div>
 </div>
@@ -1347,7 +915,7 @@ signature.update(contentBytes);
 <h2 id="_备注"><a class="anchor" href="#_备注"></a>3. 备注</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="渠道类型"><a class="anchor" href="#渠道类型"></a>3.1. 渠道类型表</h3>
+<h3 id="_渠道类型表"><a class="anchor" href="#_渠道类型表"></a>3.1. 渠道类型表</h3>
 <table id="渠道类型" class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 50%;">
@@ -1619,477 +1187,469 @@ servletResponse.getWriter().write(charge.getCredentials().get(<span class="strin
 <table id="UMF_CREDIT_CARD" class="tableblock frame-all grid-all spread">
 <caption class="title">Table 1. UMF_CREDIT_CARD</caption>
 <colgroup>
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
+<col style="width: 20%;">
+<col style="width: 13%;">
+<col style="width: 40%;">
+<col style="width: 26%;">
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">变量名</th>
-<th class="tableblock halign-left valign-top">必填</th>
-<th class="tableblock halign-left valign-top">描述</th>
-<th class="tableblock halign-left valign-top">约束</th>
+<th class="tableblock halign-left valign-middle">变量名</th>
+<th class="tableblock halign-left valign-middle">必填</th>
+<th class="tableblock halign-left valign-middle">描述</th>
+<th class="tableblock halign-left valign-middle">约束</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">sub_orders</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">子订单，每个子订单只能是相同的商品类型。</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">对象数组，详细 <a href="#sub_order">sub_order</a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">sub_orders</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">是</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">子订单，每个子订单只能是相同的商品类型。</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">对象数组，详细 <a href="#sub_order">sub_order</a></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">goods_type</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">商品分类</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">枚举值：01 充值； 02 消费</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">goods_type</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">是</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">商品分类</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">枚举值：01 充值； 02 消费</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">receiver_name</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">收货人姓名</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">字符串，最大长度256</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">receiver_name</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">是</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">收货人姓名</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">字符串，最大长度256</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">receiver_moblie_id</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">收件人的电话号码</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">字符串，手机号格式</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">receiver_moblie_id</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">是</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">收件人的电话号码</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">字符串，手机号格式</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">shipping_address</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">送货地址</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">字符串，最大长度256</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">shipping_address</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">是</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">送货地址</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">字符串，最大长度256</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">real_name</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">商品实名制购买</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">枚举值：0 非实名制； 1 实名制</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">real_name</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">是</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">商品实名制购买</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">枚举值：0 非实名制； 1 实名制</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">phone</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">银行预留号码</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">字符串，手机号格式</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">phone</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">是</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">银行预留号码</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">字符串，手机号格式</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">card_holder</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">持卡人姓名</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">字符串，加密。</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">card_holder</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">是</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">持卡人姓名</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">字符串，加密。</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">citizen_id_type</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">公民当前身份类型</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">枚举，IDENTITY_CARD</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">citizen_id_type</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">是</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">公民当前身份类型</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">枚举，IDENTITY_CARD</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">citizen_id_number</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">身份证号码</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">字符串，加密。</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">citizen_id_number</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">是</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">身份证号码</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">字符串，加密。</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">bank_code</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">银行代码</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">16个大写英文字母或数字以内</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">bank_code</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">是</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">银行代码</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">16个大写英文字母或数字以内</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">number</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">卡号</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">字符串，加密。</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">number</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">是</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">卡号</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">字符串，加密。</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">valid_date</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">银行卡有效期</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">字符串，加密。</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">valid_date</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">是</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">银行卡有效期</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">字符串，加密。</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">cvv2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">银行卡安全码</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">字符串，加密。</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">cvv2</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">是</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">银行卡安全码</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">字符串，加密。</p></td>
 </tr>
 </tbody>
 </table>
 <table id="UMF_DEBIT_CARD" class="tableblock frame-all grid-all spread">
 <caption class="title">Table 2. UMF_DEBIT_CARD</caption>
 <colgroup>
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
+<col style="width: 20%;">
+<col style="width: 13%;">
+<col style="width: 40%;">
+<col style="width: 26%;">
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">变量名</th>
-<th class="tableblock halign-left valign-top">必填</th>
-<th class="tableblock halign-left valign-top">描述</th>
-<th class="tableblock halign-left valign-top">约束</th>
+<th class="tableblock halign-left valign-middle">变量名</th>
+<th class="tableblock halign-left valign-middle">必填</th>
+<th class="tableblock halign-left valign-middle">描述</th>
+<th class="tableblock halign-left valign-middle">约束</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">sub_orders</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">子订单，每个子订单只能是相同的商品类型。</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">对象数组，详细 <a href="#sub_order">sub_order</a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">sub_orders</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">是</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">子订单，每个子订单只能是相同的商品类型。</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">对象数组，详细 <a href="#sub_order">sub_order</a></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">goods_type</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">商品分类</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">枚举值：01 充值； 02 消费</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">goods_type</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">是</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">商品分类</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">枚举值：01 充值； 02 消费</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">receiver_name</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">收货人姓名</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">字符串，最大长度256</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">receiver_name</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">是</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">收货人姓名</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">字符串，最大长度256</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">receiver_moblie_id</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">收件人的电话号码</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">字符串，手机号格式</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">receiver_moblie_id</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">是</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">收件人的电话号码</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">字符串，手机号格式</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">shipping_address</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">送货地址</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">字符串，最大长度256</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">shipping_address</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">是</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">送货地址</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">字符串，最大长度256</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">real_name</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">商品实名制购买</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">枚举值：0 非实名制； 1 实名制</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">real_name</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">是</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">商品实名制购买</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">枚举值：0 非实名制； 1 实名制</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">phone</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">银行预留号码</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">字符串，手机号格式</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">phone</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">是</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">银行预留号码</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">字符串，手机号格式</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">card_holder</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">持卡人姓名</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">字符串，加密。</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">card_holder</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">是</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">持卡人姓名</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">字符串，加密。</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">citizen_id_type</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">公民当前身份类型</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">枚举，IDENTITY_CARD</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">citizen_id_type</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">是</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">公民当前身份类型</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">枚举，IDENTITY_CARD</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">citizen_id_number</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">身份证号码</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">字符串，加密。</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">citizen_id_number</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">是</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">身份证号码</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">字符串，加密。</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">bank_code</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">银行代码</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">16个大写英文字母或数字以内</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">bank_code</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">是</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">银行代码</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">16个大写英文字母或数字以内</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">number</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">卡号</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">字符串，加密。</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">number</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">是</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">卡号</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">字符串，加密。</p></td>
 </tr>
 </tbody>
 </table>
 <table id="UMF_WECHAT__WEB" class="tableblock frame-all grid-all spread">
 <caption class="title">Table 3. UMF_WECHAT_WEB</caption>
 <colgroup>
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
+<col style="width: 20%;">
+<col style="width: 13%;">
+<col style="width: 40%;">
+<col style="width: 26%;">
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">变量名</th>
-<th class="tableblock halign-left valign-top">必填</th>
-<th class="tableblock halign-left valign-top">描述</th>
-<th class="tableblock halign-left valign-top">约束</th>
+<th class="tableblock halign-left valign-middle">变量名</th>
+<th class="tableblock halign-left valign-middle">必填</th>
+<th class="tableblock halign-left valign-middle">描述</th>
+<th class="tableblock halign-left valign-middle">约束</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">sub_orders</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">子订单，每个子订单只能是相同的商品类型。</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">对象数组，详细 <a href="#sub_order">sub_order</a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">sub_orders</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">是</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">子订单，每个子订单只能是相同的商品类型。</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">对象数组，详细 <a href="#sub_order">sub_order</a></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">goods_type</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">商品分类</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">枚举值：01 充值； 02 消费</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">goods_type</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">是</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">商品分类</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">枚举值：01 充值； 02 消费</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">receiver_name</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">收货人姓名</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">字符串，最大长度256</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">receiver_name</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">是</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">收货人姓名</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">字符串，最大长度256</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">receiver_moblie_id</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">收件人的电话号码</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">字符串，手机号格式</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">receiver_moblie_id</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">是</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">收件人的电话号码</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">字符串，手机号格式</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">shipping_address</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">送货地址</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">字符串，最大长度256</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">shipping_address</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">是</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">送货地址</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">字符串，最大长度256</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">real_name</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">商品实名制购买</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">枚举值：0 非实名制； 1 实名制</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">real_name</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">是</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">商品实名制购买</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">枚举值：0 非实名制； 1 实名制</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">phone</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">支付人手机号</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">字符串.手机号格式</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">phone</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">是</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">支付人手机号</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">字符串.手机号格式</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">name</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">支付人姓名</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">字符串.最大长度128,加密。</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">name</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">是</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">支付人姓名</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">字符串.最大长度128,加密。</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">citizen_id_type</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">公民当前身份类型， 枚举值为IDENTITY_CARD</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">枚举。</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">citizen_id_type</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">是</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">公民当前身份类型， 枚举值为IDENTITY_CARD</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">枚举。</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">citizen_id_number</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">身份证号码</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">字符串，加密。</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">citizen_id_number</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">是</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">身份证号码</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">字符串，加密。</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">open_id</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">OpenID是为每个合作用户的唯一微信id, 不同的用户有单独的OpenID.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">字符串</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">open_id</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">是</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">OpenID是为每个合作用户的唯一微信id, 不同的用户有单独的OpenID.</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">字符串</p></td>
 </tr>
 </tbody>
 </table>
 <table id="三种方式的参数" class="tableblock frame-all grid-all spread">
 <caption class="title">Table 4. UMF_WECHAT_SCAN 、UMF_ALIPAY_SCAN、UMF_WECHAT_IN_APP</caption>
 <colgroup>
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
+<col style="width: 20%;">
+<col style="width: 13%;">
+<col style="width: 40%;">
+<col style="width: 26%;">
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">变量名</th>
-<th class="tableblock halign-left valign-top">必填</th>
-<th class="tableblock halign-left valign-top">描述</th>
-<th class="tableblock halign-left valign-top">约束</th>
+<th class="tableblock halign-left valign-middle">变量名</th>
+<th class="tableblock halign-left valign-middle">必填</th>
+<th class="tableblock halign-left valign-middle">描述</th>
+<th class="tableblock halign-left valign-middle">约束</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">sub_orders</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">子订单，每个子订单只能是相同的商品类型。</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">对象数组，详细 <a href="#sub_order">sub_order</a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">sub_orders</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">是</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">子订单，每个子订单只能是相同的商品类型。</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">对象数组，详细 <a href="#sub_order">sub_order</a></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">goods_type</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">商品分类</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">枚举值：01 充值； 02 消费</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">goods_type</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">是</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">商品分类</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">枚举值：01 充值； 02 消费</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">receiver_name</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">收货人姓名</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">字符串，最大长度256</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">receiver_name</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">是</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">收货人姓名</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">字符串，最大长度256</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">receiver_moblie_id</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">收件人的电话号码</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">字符串，手机号格式</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">receiver_moblie_id</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">是</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">收件人的电话号码</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">字符串，手机号格式</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">shipping_address</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">送货地址</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">字符串，最大长度256</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">shipping_address</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">是</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">送货地址</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">字符串，最大长度256</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">real_name</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">商品实名制购买</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">枚举值：0 非实名制； 1 实名制</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">real_name</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">是</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">商品实名制购买</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">枚举值：0 非实名制； 1 实名制</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">phone</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">支付人手机号</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">字符串.手机号格式</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">phone</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">是</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">支付人手机号</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">字符串.手机号格式</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">name</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">支付人姓名</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">字符串.最大长度128,加密。</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">name</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">是</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">支付人姓名</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">字符串.最大长度128,加密。</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">citizen_id_type</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">公民当前身份类型， 枚举值为IDENTITY_CARD</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">枚举。</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">citizen_id_type</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">是</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">公民当前身份类型， 枚举值为IDENTITY_CARD</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">枚举。</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">citizen_id_number</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">身份证号码</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">字符串，加密。</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">citizen_id_number</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">是</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">身份证号码</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">字符串，加密。</p></td>
 </tr>
 </tbody>
 </table>
 <table id="sub_order" class="tableblock frame-all grid-all spread">
 <caption class="title">Table 5. sub_order</caption>
 <colgroup>
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
+<col style="width: 28%;">
+<col style="width: 14%;">
+<col style="width: 28%;">
+<col style="width: 28%;">
 </colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">变量名</th>
-<th class="tableblock halign-left valign-top">必填</th>
-<th class="tableblock halign-left valign-top">描述</th>
-<th class="tableblock halign-left valign-top">约束</th>
-</tr>
-</thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">mer_sub_reference_id</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">子订单对象的id</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">字符串，最大长度16，最小长度4。</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">mer_sub_reference_id</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">是</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">子订单对象的id</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">字符串，最大长度16，最小长度4。</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">sub_total</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">子订单的总金额</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">字符串，最大长度10， 两位小数。</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">sub_total</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">是</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">子订单的总金额</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">字符串，最大长度10， 两位小数。</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">trans_code</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">商品的交易码</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">字符串，最大长度8，最小长度4。</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">trans_code</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">是</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">商品的交易码</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">字符串，最大长度8，最小长度4。</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">is_customs</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">商户是否需要UMF向用户提交付款信息</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">字符串</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">is_customs</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">是</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">商户是否需要UMF向用户提交付款信息</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">字符串</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">invoice_id</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">子订单收据</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">字符串，最大长度20。</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">invoice_id</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">是</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">子订单收据</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">字符串，最大长度20。</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">mer_item_id</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">商户系统id</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">字符串，最大长度32。</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">mer_item_id</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">是</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">商户系统id</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">字符串，最大长度32。</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">type</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">商品类型</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">枚举值</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">type</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">是</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">商品类型</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">枚举值</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">name</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">否</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">商品名称</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">字符串，最大长度256。</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">name</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">否</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">商品名称</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">字符串，最大长度256。</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">description</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">否</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">商品描述</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">字符串，最大长度64。</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">description</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">否</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">商品描述</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">字符串，最大长度64。</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">mer_total</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">单个商品的金额</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">字符串，最大长度10， 两位小数。</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">mer_total</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">是</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">单个商品的金额</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">字符串，最大长度10， 两位小数。</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">quantity</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">是</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">商品的数量</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">字符串</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">quantity</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">是</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">商品的数量</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">字符串</p></td>
 </tr>
 </tbody>
 </table>
 <table id="微信直接支付" class="tableblock frame-all grid-all spread">
 <caption class="title">Table 6. WX_CODE、WX_APP、WX_JSAPI</caption>
 <colgroup>
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
+<col style="width: 22%;">
+<col style="width: 11%;">
+<col style="width: 22%;">
+<col style="width: 22%;">
+<col style="width: 22%;">
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">变量名</th>
-<th class="tableblock halign-left valign-top">必填</th>
-<th class="tableblock halign-left valign-top">类型</th>
-<th class="tableblock halign-left valign-top">示例值</th>
-<th class="tableblock halign-left valign-top">描述</th>
+<th class="tableblock halign-left valign-middle">变量名</th>
+<th class="tableblock halign-left valign-middle">必填</th>
+<th class="tableblock halign-left valign-middle">类型</th>
+<th class="tableblock halign-left valign-middle">示例值</th>
+<th class="tableblock halign-left valign-middle">描述</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">attach</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">否</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">String(127)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">深圳分店</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">附加数据，在查询API和支付通知中原样返回，该字段主要用于商户携带订单的自定义数据</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">attach</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">否</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">String(127)</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">深圳分店</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">附加数据，在查询API和支付通知中原样返回，该字段主要用于商户携带订单的自定义数据</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">detail</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">否</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">String(6000</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">{
+<td class="tableblock halign-left valign-middle"><p class="tableblock">detail</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">否</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">String(6000</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">{
 "goods_id":"iphone6s_32G",
 "wxpay_goods_id":"1002",
 "goods_name":"iPhone6s 32G",
@@ -2097,86 +1657,28 @@ servletResponse.getWriter().write(charge.getCredentials().get(<span class="strin
 "goods_category":"123789",
 "body":"苹果手机"
 }</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">商品详细列表，使用Json格式</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">商品详细列表，使用Json格式</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">goods_tag</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">否</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">String(32)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">WXG</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">订单优惠标记，代金券或立减优惠功能的参数.</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">goods_tag</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">否</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">String(32)</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">WXG</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">订单优惠标记，代金券或立减优惠功能的参数.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">product_id</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">否</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">String(32)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.22354E+22</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">trade_type=NATIVE，此参数必传。
+<td class="tableblock halign-left valign-middle"><p class="tableblock">product_id</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">否</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">String(32)</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">1.22354E+22</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">trade_type=NATIVE，此参数必传。
 此id为二维码中包含的商品ID，商户自行定义。</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect2">
-<h3 id="订单状态"><a class="anchor" href="#订单状态"></a>3.5. 订单状态表</h3>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">参数名</th>
-<th class="tableblock halign-left valign-top">含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>STARTED</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">支付开始（即支付中）</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>SUCCEEDED</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">支付成功</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>FAILED</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">支付失败</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect2">
-<h3 id="退款状态"><a class="anchor" href="#退款状态"></a>3.6. 退款状态表</h3>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">参数名</th>
-<th class="tableblock halign-left valign-top">含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>STARTED</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">退款开始</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>SUCCEEDED</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">退款成功</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>FAILED</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">退款失败</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect2">
-<h3 id="标价币种"><a class="anchor" href="#标价币种"></a>3.7. 货币类型表<br></h3>
+<h3 id="标价币种"><a class="anchor" href="#标价币种"></a>3.5. 货币类型表<br></h3>
 <div class="paragraph">
 <p>CNY：人民币<br>
 GBP：英镑<br>
@@ -2197,8 +1699,7 @@ THB：泰铢<br>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 0.0<br>
-Last updated 2017-09-21 14:40:06 CST
+Last updated 2017-09-22 14:09:21 CST
 </div>
 </div>
 </body>

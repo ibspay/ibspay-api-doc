@@ -133,7 +133,7 @@ POST /charges
 ----
 ==== Request Parameters
 
-[align="center"]
+[cols=".^3,.^3,.^3,.^5,.^3"]
 |===
 |Parameters |Required |Type |Example |Description
 
@@ -193,47 +193,47 @@ POST /charges
 
 |===
 ==== Synchronized Return Parameters
-After the perfect.
+To be continued.
 
 ==== Asynchronous Notification Parameters
-After the perfect.
+To be continued.
 
 === Submit Refund API
-After the perfect.
+To be continued.
 
 ==== Request Parameters
-After the perfect.
+To be continued.
 
 ==== Return Parameters
-After the perfect.
+To be continued.
 
 ==== Asynchronous Notification Parameters
 
-After the perfect.
+To be continued.
 
 === Query Order
-After the perfect.
+To be continued.
 
 ==== Request Parameters
 
-After the perfect.
+To be continued.
 
 ==== Return Parameters
 
-After the perfect.
+To be continued.
 
 === Query Refund
-After the perfect.
+To be continued.
 
 ==== Request Parameters
-After the perfect.
+To be continued.
 
 ==== Return Data
-After the perfect.
+To be continued.
 
 == Remark
 === Channel Type
-[align="center"]
+[cols=".^1,.^4"]
 |===
 |Name |Description
 
@@ -350,7 +350,7 @@ servletResponse.getWriter().write(charge.getCredentials().get("html"));
 
 [[UMF_CREDIT_CARD]]
 .UMF_CREDIT_CARD
-[align="center"]
+[cols=".^3,.^2,.^4,.^4"]
 |===
 |Parameter|Required|Description |Constraints
 
@@ -424,7 +424,7 @@ servletResponse.getWriter().write(charge.getCredentials().get("html"));
 |===
 
 [[UMF_DEBIT_CARD]]
-[align="center"]
+[cols=".^3,.^2,.^4,.^4"]
 .UMF_DEBIT_CARD
 |===
 |Parameter|Required|Description |Constraints
@@ -470,7 +470,6 @@ servletResponse.getWriter().write(charge.getCredentials().get("html"));
 |String
 
 
-
 |citizen_id_number
 |YES
 |Citizen id number.
@@ -489,7 +488,7 @@ servletResponse.getWriter().write(charge.getCredentials().get("html"));
 |===
 
 [[UMF_WECHAT__WEB]]
-[align="center"]
+[cols=".^3,.^2,.^4,.^4"]
 .UMF_WECHAT_WEB
 |===
 |Parameter|Required|Description |Constraints
@@ -548,7 +547,7 @@ servletResponse.getWriter().write(charge.getCredentials().get("html"));
 |===
 
 [[三种方式的参数]]
-[align="center"]
+[cols=".^3,.^2,.^4,.^4"]
 .UMF_WECHAT_SCAN 、UMF_ALIPAY_SCAN、UMF_WECHAT_IN_APP
 |===
 |Parameter|Required|Description |Constraints
@@ -602,7 +601,7 @@ servletResponse.getWriter().write(charge.getCredentials().get("html"));
 |===
 
 [[sub_order]]
-[align="center"]
+[cols=".^3,.^2,.^4,.^4"]
 .sub_order
 |===
 |Parameter|Required|Description |Constraints
@@ -665,7 +664,7 @@ servletResponse.getWriter().write(charge.getCredentials().get("html"));
 |===
 
 [[微信直接支付]]
-[align="center"]
+[cols=".^3,.^3,.^3,.^4,.^6"]
 .WX_CODE、WX_APP、WX_JSAPI
 |===
 
