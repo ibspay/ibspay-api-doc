@@ -1,4 +1,4 @@
-# pg-api-doc
-IBS Payment Gateway API Document
+# ibspay-api-doc
+IBSPay API Document
 
-https://ibspay.github.io/pg-api-doc/
+https://ibspay.github.io/ibspay-api-doc/
